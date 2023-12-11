@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_switch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:24:01 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/11 15:08:33 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:58:39 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	quit(t_data *data)
 	i = 0;
 	while (i < 8)
 	{
-		mlx_destroy_image(data->mlx, data->assets[0][i]->img);
+		mlx_destroy_image(data->mlx, data->assets.evoli[i].img);
 		i++;
 	}
 	mlx_destroy_window(data->mlx, data->win);

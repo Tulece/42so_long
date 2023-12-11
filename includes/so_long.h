@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/11 15:50:26 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:56:53 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,49 +55,49 @@ typedef struct	s_player {
 
 }			t_player;
 
-typedef struct s_image {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	char	*path;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-}			t_image;
+}			t_img;
 
-// typedef struct s_assets {
-// 	void	*evoli;
-// 	void	*pyroli;
-// 	void	*voltali;
-// 	void	*aquali;
-// 	void	*noctali;
-// 	void	*mentali;
-// 	void	*phyllali;
-// 	void	*givrali;
-// 	void	*regice;
-// 	void	*hooh;
-// 	void	*groudon;
-// 	void	*giratina;
-// 	void	*mew;
-// 	void	*kyogre;
-// 	void	*rayquaza;
-// 	void	*grass;
-// }			t_assets;
+typedef struct s_assets {
+	t_img	*evoli;
+	t_img	*pyroli;
+	t_img	*voltali;
+	t_img	*aquali;
+	t_img	*noctali;
+	t_img	*mentali;
+	t_img	*phyllali;
+	t_img	*givrali;
+	t_img	*regice;
+	t_img	*hooh;
+	t_img	*groudon;
+	t_img	*giratina;
+	t_img	*mew;
+	t_img	*kyogre;
+	t_img	*rayquaza;
+	t_img	*grass;
+}			t_assets;
 
 typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	int		img_width;
 	int		img_height;
-	t_image	img;
+	t_img	img;
 	t_axes	axes;
-	t_image	***assets;
+	t_assets	assets;
 }			t_data;
 
 int		hook_switch(int keycode, t_data *data);
 void	quit(t_data *data);
 int		key_press(int keycode, t_data *data);
-
 void	init_textures(t_data *data);
+char	*path_creator(char *pokemon, int i);
 
 #ifdef __linux__
 # include <X11/keysym.h>

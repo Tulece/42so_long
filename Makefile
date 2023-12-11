@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anporced <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anporced <anporced@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 22:17:24 by anporced          #+#    #+#              #
-#    Updated: 2023/12/11 15:37:08 by anporced         ###   ########.fr        #
+#    Updated: 2023/12/11 20:09:33 by anporced         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 CC		=	gcc
-FLAGS 	=	-g -fsanitize=address
+FLAGS 	=	-g 
 LIBFT_PATH = libft/
 LIBFT_FILE = libft/libft.a
 MLX_PATH = minilibx-linux/libmlx.a
@@ -27,7 +27,7 @@ RM 		=	rm -f
 
 $(NAME): $(OBJ)
 	make -C minilibx-linux/
-	$(CC) $(FLAGS) $(OBJ) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -I includes/
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_PATH) $(MLX_FLAGS) $(LIBFT_FILE) -o $(NAME) -I includes/
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@ -I includes/

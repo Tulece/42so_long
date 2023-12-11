@@ -21,10 +21,6 @@ SRCS =	src/ft_isdigit.c src/ft_isalpha.c src/ft_isalnum.c src/ft_isascii.c \
 		src/ft_lstadd_back.c src/ft_lstdelone.c src/ft_lstclear.c \
 		src/ft_lstiter.c src/ft_lstmap.c src/ft_printf/ft_printf.c \
 		src/ft_printf/ft_utilities.c src/ft_printf/ft_utilities2.c \
-		src/get_next_line/get_next_line.c \
-		src/get_next_line/get_next_line_utils.c \
-		src/get_next_line/get_next_line_bonus.c \
-		src/get_next_line/get_next_line_utils_bonus.c
 
 OBJS = ${SRCS:.c=.o}
 
