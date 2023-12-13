@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/11 19:56:53 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:46:07 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,20 @@ typedef struct	s_player {
 	int					stone;
 	unsigned int		moves;
 
-}			t_player;
+}						t_player;
+
+typedef struct	s_enemies {
+	t_axes				axes;
+	int					stone;
+	unsigned int		moves;
+
+}						enemies;
+
+typedef struct	s_wallsngrounds {
+	t_axes	axes;
+	int		stone;
+
+}			t_wallsngrounds;
 
 typedef struct s_img {
 	void	*img;
@@ -65,39 +78,37 @@ typedef struct s_img {
 }			t_img;
 
 typedef struct s_assets {
-	t_img	*evoli;
-	t_img	*pyroli;
-	t_img	*voltali;
-	t_img	*aquali;
-	t_img	*noctali;
-	t_img	*mentali;
-	t_img	*phyllali;
-	t_img	*givrali;
-	t_img	*regice;
-	t_img	*hooh;
-	t_img	*groudon;
-	t_img	*giratina;
-	t_img	*mew;
-	t_img	*kyogre;
-	t_img	*rayquaza;
-	t_img	*grass;
+	t_img	**player;
+	t_img	**enemies;
+	t_img	**wallsngrounds;
 }			t_assets;
 
 typedef struct s_data {
-	void	*mlx;
-	void	*win;
-	int		img_width;
-	int		img_height;
-	t_img	img;
-	t_axes	axes;
+	void		*mlx;
+	void		*win;
+	int			img_width;
+	int			img_height;
+	t_img		img;
+	t_axes		axes;
 	t_assets	assets;
 }			t_data;
 
 int		hook_switch(int keycode, t_data *data);
-void	quit(t_data *data);
+// void	quit(t_data *data);
 int		key_press(int keycode, t_data *data);
-void	init_textures(t_data *data);
+void	malloc_evolis(t_data *data);
+char	**init_evolis_path(t_data *data);
+void	init_evolis(t_data *data);
+void	print_img(t_data *data, void *img, int x, int y);
 char	*path_creator(char *pokemon, int i);
+
+void	malloc_enemies(t_data *data);
+char	**init_enemies_path(t_data *data);
+void	init_enemies(t_data *data);
+
+void	malloc_wallsngrounds(t_data *data);
+char	**init_wallsngrounds_path(t_data *data);
+void	init_wallsngrounds(t_data *data);
 
 #ifdef __linux__
 # include <X11/keysym.h>

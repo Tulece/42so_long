@@ -3,46 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:18:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/11 22:04:26 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:03:38 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURES_H
 # define TEXTURES_H
 
-# define grass1 "../textures/obstacles/grass1.xpm"
+# define grass_ "./textures/obstacles/grass"
 
-# define evoli_ "../textures/evolition/evoli"
+#define tree_ "./textures/obstacles/tree"
 
-# define pyroli_ "../textures/evolition/pyroli"
+# define evoli_ "./textures/evolition/evoli"
 
-# define voltali_ "../textures/evolition/voltali"
+# define pyroli_ "./textures/evolition/pyroli"
 
-# define aquali_ "../textures/evolition/aquali"
+# define voltali_ "./textures/evolition/voltali"
 
-# define noctali_ "../textures/evolition/noctali"
+# define aquali_ "./textures/evolition/aquali"
 
-# define mentali_ "../textures/evolition/mentali"
+# define noctali_ "./textures/evolition/noctali"
 
-# define phyllali_ "../textures/evolition/phyllali"
+# define mentali_ "./textures/evolition/mentali"
 
-# define givrali_ "../textures/evolition/givrali"
+# define phyllali_ "./textures/evolition/phyllali"
 
-# define regice_ "../textures/obstacles/regice"
+# define givrali_ "./textures/evolition/givrali"
 
-# define hooh_ "../textures/obstacles/hooh"
+# define regice_ "./textures/obstacles/regice"
 
-# define groudon_ "../textures/obstacles/groudon"
+# define hooh_ "./textures/obstacles/hooh"
 
-# define giratina_ "../textures/obstacles/giratina"
+# define groudon_ "./textures/obstacles/groudon"
 
-# define mew_ "../textures/obstacles/mew"
+# define giratina_ "./textures/obstacles/giratina"
 
-# define kyogre_ "../textures/obstacles/kyogre"
+# define mew_ "./textures/obstacles/mew"
 
-# define rayquaza_ "../textures/obstacles/rayquaza"
+# define kyogre_ "./textures/obstacles/kyogre"
+
+# define rayquaza_ "./textures/obstacles/rayquaza"
 
 #endif
