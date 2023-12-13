@@ -3,57 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 22:27:27 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/13 18:49:22 by anporced         ###   ########.fr       */
+/*   Created: 2023/12/13 21:36:31 by anporced          #+#    #+#             */
+/*   Updated: 2023/12/13 23:27:24 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	malloc_wallsngrounds(t_data *data)
+
+void	ft_error(char *str, t_data *data)
 {
-	data->assets.wallsngrounds = (t_img **)malloc(sizeof(t_img *) * 2);
-	data->assets.wallsngrounds[0] = (t_img *)malloc(sizeof(t_img) * 2);
-	data->assets.wallsngrounds[1] = (t_img *)malloc(sizeof(t_img) * 2);
+	printf("%s\n", str);
+	end(data);
 }
 
-char	**init_wallsngrounds_path(t_data *data)
+static int	get_file_size(t_data *data)
 {
-	char	**wallsngrounds;
+	int		fd;
+	int		size;
+	char	c;
 
-	wallsngrounds = malloc(sizeof( char *) * 3);
-	wallsngrounds[0] = ft_strdup(grass_);
-	wallsngrounds[1] = ft_strdup(tree_);
-	return (wallsngrounds);
+	fd = open(data->map_path, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error open file", data);
+	size = 0;
+	while (read(fd, &c, 1) > 0)
+		size++;
+	close(fd);
+	return (size);
 }
 
-void	init_wallsngrounds(t_data *data)
+char	*file_to_str(t_data *data)
 {
+	int		fd;
+	char	*str;
 	int		i;
-	int		j;
-	char 	*str;
-	char	*texture;
-	int		w;
-	int		h;
-	char 	**wallsngrounds_paths;
 
+	str = malloc(sizeof(char) * (get_file_size(data) + 1));
+	if (!str)
+		ft_error("Error malloc", data);
+	fd = open(data->map_path, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error open file", data);
 	i = 0;
-	wallsngrounds_paths = init_wallsngrounds_path(data);
-	while (i < 2)
-	{
-		j = 0;
-		texture = wallsngrounds_paths[i];
-		while (j < 2)
-		{
-			str = path_creator(texture, j);
-			printf("%s\n", str);
-			data->assets.wallsngrounds[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
-			free(str);
-			j++;
-			printf("a\n");
-		}
+	while (read(fd, &str[i], 1) > 0)
 		i++;
-	}
+	str[i] = '\0';
+	close(fd);
+	return (str);
+}
+
+char	**str_to_tab(char *str)
+{
+	char	**map;
+
+	map = ft_split(str, '\n');
+	free(str);
+	return (map);
+}
+
+t_axes	map_size(t_data *data)
+{
+	t_axes	size;
+
+	size.y = 0;
+	while (data->map[size.y])
+		size.y++;
+	size.x = 0;
+	while (data->map[0][size.x])
+		size.x++;
+	return (size);
 }

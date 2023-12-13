@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/13 18:41:39 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:44:51 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,33 +80,4 @@ char	*path_creator(char *pokemon, int i)
 	path = ft_strjoin(str, ".xpm");
 	free(str);
 	return (path);
-}
-
-int main(void)
-{
-	t_data	data;
-	int		i;
-	int		j;
-
-	i = 0;
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 1024, 1024, "so_long");
-	// malloc_evolis(&data);
-	// init_evolis(&data);
-	// malloc_enemies(&data);
-	// init_enemies(&data);
-	malloc_wallsngrounds(&data);
-	init_wallsngrounds(&data);
-	while(i < 3)
-	{
-		j = 0;
-		while (j < 2)
-		{
-			print_img(&data, data.assets.wallsngrounds[i][j].img, i, j);
-			j++;
-		}
-		i++;
-	}
-	mlx_loop(data.mlx);
-	return (0);
 }
