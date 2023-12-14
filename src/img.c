@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asangerm <asangerm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/13 23:38:31 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/14 01:29:59 by asangerm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
 		}
 		j.y++;
 	}
-	print_img(data, data->assets.textures[i.x][i.y].img, i);
+	print_img(data, bg.img, i);
+	//print_img(data, data->assets.textures[i.x][i.y].img, i);
 	mlx_destroy_image(data->mlx, bg.img);
 }
 
@@ -49,6 +50,7 @@ void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i)
 {
 	t_img	back;
 
+	printf("%s\n", bg.path);
 	back.img = mlx_xpm_file_to_image(data->mlx, bg.path, &back.w, &back.h);
 	fg.addr = mlx_get_data_addr(fg.img, &fg.bpp, &fg.size_line, &fg.endian);
 	back.addr = mlx_get_data_addr(back.img, &back.bpp, &back.size_line,
@@ -61,20 +63,27 @@ void	display_map(t_data *data)
 	t_axes	i;
 	int		k;
 	int		l;
+	l = 0;
+	k = 0;
 	i.y = 0;
-	printf("i.x = %d, i.y = %d\n", i.x, i.y);
+	printf("i.x = %d, i.y = %d prout\n", data->map_dim.x, data->map_dim.y);
 	while (i.y < data->map_dim.y)
 	{
 		i.x = 0;
 	printf("a\n");
 		while (i.x < data->map_dim.x)
 		{
+			if (k == 7)
+				k = 0;
+			if (l == 7)
+				l = 0;
 			if (data->map[i.y][i.x] == '1')
 				print_img(data, data->assets.textures[0][0].img, i);
 			else if (data->map[i.y][i.x] == '0')
 				print_img(data, data->assets.textures[0][0].img, i);
 			else if (data->map[i.y][i.x] == 'P')
-				overlay_img(data->assets.player[0][0], data->assets.textures[0][0], data, i);
+				//print_img(data, data->assets.player[0][0].img , i);
+				overlay_img(data->assets.player[k][l], data->assets.textures[0][0], data, i);
 			// else if (data->map[i.y][i.x] == 'E')
 			// 	print_img(data, data->text.portal[0], i);
 			// else if (data->map[i.y][i.x] == 'C')

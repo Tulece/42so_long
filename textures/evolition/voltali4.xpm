@@ -4,7 +4,7 @@ static char * voltaliLeft1_xpm[] = {
 " 	c None",
 ".	c #403828",
 "+	c #E8A020",
-"@	c #000000",
+"@	c #101010",
 "#	c #F8F850",
 "$	c #F8C818",
 "%	c #A86820",

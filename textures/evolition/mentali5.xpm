@@ -10,7 +10,7 @@ static char * mentaliLeft2_xpm[] = {
 "%	c #E888B0",
 "&	c #3870B0",
 "*	c #A868A0",
-"=	c #000000",
+"=	c #101010",
 "-	c #E8E8F8",
 "                                                                ",
 "                                                                ",

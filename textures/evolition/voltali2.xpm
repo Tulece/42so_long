@@ -6,7 +6,7 @@ static char * voltaliDos1_xpm[] = {
 "+	c #F8F850",
 "@	c #F8C818",
 "#	c #E8A020",
-"$	c #000000",
+"$	c #101010",
 "%	c #484050",
 "&	c #D0E0E8",
 "*	c #A8A8C0",

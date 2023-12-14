@@ -6,7 +6,7 @@ static char * mentaliFace1_xpm[] = {
 "+	c #F0C8E8",
 "@	c #E0B0D8",
 "#	c #A868A0",
-"$	c #000000",
+"$	c #101010",
 "%	c #C890D0",
 "&	c #3870B0",
 "*	c #E888B0",

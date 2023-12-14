@@ -7,7 +7,7 @@ static char * mentaliRight1_xpm[] = {
 "@	c #E0B0D8",
 "#	c #C890D0",
 "$	c #A868A0",
-"%	c #000000",
+"%	c #101010",
 "&	c #3870B0",
 "*	c #E888B0",
 "=	c #C83830",

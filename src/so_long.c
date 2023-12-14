@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/13 23:29:56 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:52:31 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 	init_enemies(&data);
 	malloc_textures(&data);
 	init_textures(&data);
-	// data.map_dim = map_size(&data);
+	data.map_dim = map_size(&data);
 	display_map(&data);
 	mlx_loop(data.mlx);
 }

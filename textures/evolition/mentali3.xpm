@@ -3,7 +3,7 @@ static char * mentaliDos2_xpm[] = {
 "64 64 7 1",
 " 	c None",
 ".	c #502878",
-"+	c #000000",
+"+	c #101010",
 "@	c #F0C8E8",
 "#	c #C890D0",
 "$	c #E0B0D8",
