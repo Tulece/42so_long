@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asangerm <asangerm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 01:17:49 by asangerm         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:31:22 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	init_evolis(t_data *data)
 			str = path_creator(evolition, j);
 			data->assets.player[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
 			data->assets.player[i][j].path = str;
-			//printf("%s\n", data->assets.player[i][j].path);
-			free(str);
 			j++;
 		}
 		i++;

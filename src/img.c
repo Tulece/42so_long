@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asangerm <asangerm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 01:29:59 by asangerm         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:57:13 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i)
 {
 	t_img	back;
 
-	printf("%s\n", bg.path);
 	back.img = mlx_xpm_file_to_image(data->mlx, bg.path, &back.w, &back.h);
 	fg.addr = mlx_get_data_addr(fg.img, &fg.bpp, &fg.size_line, &fg.endian);
 	back.addr = mlx_get_data_addr(back.img, &back.bpp, &back.size_line,
@@ -66,14 +65,12 @@ void	display_map(t_data *data)
 	l = 0;
 	k = 0;
 	i.y = 0;
-	printf("i.x = %d, i.y = %d prout\n", data->map_dim.x, data->map_dim.y);
 	while (i.y < data->map_dim.y)
 	{
 		i.x = 0;
-	printf("a\n");
 		while (i.x < data->map_dim.x)
 		{
-			if (k == 7)
+			if (k == 5)
 				k = 0;
 			if (l == 7)
 				l = 0;
@@ -88,13 +85,12 @@ void	display_map(t_data *data)
 			// 	print_img(data, data->text.portal[0], i);
 			// else if (data->map[i.y][i.x] == 'C')
 			// 	overlay_img(data->text.diamond, data->assets.textures[i.x][i.y].img, data, i);
-			// else if (data->map[i.y][i.x] == 'Z')
-			// 	overlay_img(data->assets.enemies[k][l], data->assets.textures[k][l], data, i);
+			else if (data->map[i.y][i.x] == 'Z')
+				overlay_img(data->assets.enemies[k][l], data->assets.textures[0][0], data, i);
 			i.x++;
 			k++;
 		}
 		i.y++;
 		l++;
 	}
-	// data->portal_i = 0;
 }

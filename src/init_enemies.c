@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_enemies.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/13 17:21:16 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:47:51 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_enemies(t_data *data)
 		{
 			str = path_creator(pokemon, j);
 			data->assets.enemies[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
-			free(str);
+			data->assets.enemies[i][j].path = str;
 			j++;
 		}
 		i++;
