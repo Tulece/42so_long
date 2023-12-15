@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 14:47:51 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:20:11 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ char	**init_enemies_path(t_data *data)
 	enemies_paths[0] = ft_strdup(regice_);
 	enemies_paths[1] = ft_strdup(hooh_);
 	enemies_paths[2] = ft_strdup(groudon_);
-	enemies_paths[3] = ft_strdup(giratina_);
-	enemies_paths[4] = ft_strdup(kyogre_);
+	enemies_paths[3] = ft_strdup(kyogre_);
+	enemies_paths[4] = ft_strdup(ectoplasma_);
 	enemies_paths[5] = ft_strdup(rayquaza_);
+	enemies_paths[6] = ft_strdup(giratina_);
+	
 	return (enemies_paths);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 14:31:22 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:06:08 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ char	**init_evolis_path(t_data *data)
 	evopaths = malloc(sizeof( char *) * 9);
 	evopaths[0] = ft_strdup(evoli_);
 	evopaths[1] = ft_strdup(pyroli_);
-	evopaths[2] = ft_strdup(aquali_);
-	evopaths[3] = ft_strdup(voltali_);
-	evopaths[4] = ft_strdup(noctali_);
-	evopaths[5] = ft_strdup(mentali_);
+	evopaths[2] = ft_strdup(voltali_);
+	evopaths[3] = ft_strdup(aquali_);
+	evopaths[4] = ft_strdup(mentali_);
+	evopaths[5] = ft_strdup(phyllali_);
 	evopaths[6] = ft_strdup(givrali_);
-	evopaths[7] = ft_strdup(phyllali_);
+	evopaths[7] = ft_strdup(noctali_);
 	return (evopaths);
 }
 

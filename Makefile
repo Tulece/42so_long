@@ -6,7 +6,7 @@
 #    By: anporced <anporced@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 22:17:24 by anporced          #+#    #+#              #
-#    Updated: 2023/12/14 13:44:21 by anporced         ###   ########.fr        #
+#    Updated: 2023/12/15 14:58:14 by anporced         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,6 @@ clean:
 	@echo "Deleting So_long object...\n"
 	@rm -f $(OBJ)
 	@echo "Done\n"
-
-pclean:
-	@rm -rf $(OBJ)
-
-renl: pclean all
 
 fclean: clean
 	@echo "Deleting so_long executable..."
