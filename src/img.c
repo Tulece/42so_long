@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 14:57:13 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/15 01:02:06 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,23 @@ void	display_map(t_data *data)
 		i.x = 0;
 		while (i.x < data->map_dim.x)
 		{
-			if (k == 5)
+			if (k == 7)
 				k = 0;
 			if (l == 7)
 				l = 0;
 			if (data->map[i.y][i.x] == '1')
-				print_img(data, data->assets.textures[0][0].img, i);
+				print_img(data, data->assets.textures[1][0].img, i);
 			else if (data->map[i.y][i.x] == '0')
-				print_img(data, data->assets.textures[0][0].img, i);
+				print_img(data, data->assets.textures[0][1].img, i);
 			else if (data->map[i.y][i.x] == 'P')
 				//print_img(data, data->assets.player[0][0].img , i);
-				overlay_img(data->assets.player[k][l], data->assets.textures[0][0], data, i);
+				overlay_img(data->assets.player[k][l], data->assets.textures[0][1], data, i);
 			// else if (data->map[i.y][i.x] == 'E')
 			// 	print_img(data, data->text.portal[0], i);
 			// else if (data->map[i.y][i.x] == 'C')
 			// 	overlay_img(data->text.diamond, data->assets.textures[i.x][i.y].img, data, i);
 			else if (data->map[i.y][i.x] == 'Z')
-				overlay_img(data->assets.enemies[k][l], data->assets.textures[0][0], data, i);
+				overlay_img(data->assets.enemies[k][l], data->assets.textures[0][1], data, i);
 			i.x++;
 			k++;
 		}

@@ -1,5 +1,5 @@
 /* XPM */
-static char * flower1_xpm[] = {
+static char * flower0_xpm[] = {
 "64 64 15 1",
 " 	c #CDF683",
 ".	c #D5F67B",
