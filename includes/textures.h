@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:18:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 22:24:57 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:50:21 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # define grass_ "./textures/obstacles/grass"
 
-# define flower_"./textures/obstacles/flower"
+# define tree_ "./textures/obstacles/tree"
 
-#define tree_ "./textures/obstacles/tree"
+# define collectible_ "./textures/stones/stone"
 
 # define evoli_ "./textures/evolition/evoli"
 
