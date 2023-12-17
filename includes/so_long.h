@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/15 16:10:20 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/17 22:03:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_img {
 typedef struct s_assets {
 	t_img	**player;
 	t_img	**enemies;
-	t_img	**textures;
+	t_img	*textures;
 	t_img	*collectibles;
 }			t_assets;
 
@@ -129,7 +129,7 @@ char	**init_enemies_path(t_data *data);
 void	init_enemies(t_data *data);
 
 void	malloc_textures(t_data *data);
-char	**init_textures_path(t_data *data);
+char	*init_textures_path(t_data *data);
 void	init_textures(t_data *data);
 
 void	malloc_collectibles(t_data *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/15 17:08:53 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/17 22:21:22 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
 		j.y++;
 	}
 	print_img(data, bg.img, i);
-	//print_img(data, data->assets.textures[i.x][i.y].img, i);
 	mlx_destroy_image(data->mlx, bg.img);
 }
 
@@ -75,18 +74,17 @@ void	display_map(t_data *data)
 			if (l == 7)
 				l = 0;
 			if (data->map[i.y][i.x] == '1')
-				print_img(data, data->assets.textures[1][0].img, i);
+				print_img(data, data->assets.textures[1].img, i);
 			else if (data->map[i.y][i.x] == '0')
-				print_img(data, data->assets.textures[0][1].img, i);
+				print_img(data, data->assets.textures[0].img, i);
 			else if (data->map[i.y][i.x] == 'P')
-				//print_img(data, data->assets.player[0][0].img , i);
-				overlay_img(data->assets.player[k][l], data->assets.textures[0][1], data, i);
+				overlay_img(data->assets.player[k][l], data->assets.textures[0], data, i);
 			// else if (data->map[i.y][i.x] == 'E')
 			// 	print_img(data, data->text.portal[0], i);
 			else if (data->map[i.y][i.x] == 'C')
-				overlay_img(data->assets.collectibles[1], data->assets.textures[0][1], data, i);
+				overlay_img(data->assets.collectibles[k], data->assets.textures[0], data, i);
 			else if (data->map[i.y][i.x] == 'Z')
-				overlay_img(data->assets.enemies[k][l], data->assets.textures[0][1], data, i);
+				overlay_img(data->assets.enemies[k][l], data->assets.textures[0], data, i);
 			i.x++;
 			k++;
 		}
