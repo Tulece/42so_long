@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anporced <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anporced <anporced@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 22:17:24 by anporced          #+#    #+#              #
-#    Updated: 2023/11/25 15:15:58 by anporced         ###   ########.fr        #
+#    Updated: 2023/12/15 14:58:14 by anporced         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
-CC		=	cc -Wall -Wextra -Werror -g
-FLAGS 	=	-Wall -Wextra -Werror
+CC		=	gcc
+FLAGS 	=	-g
 LIBFT_PATH = libft/
 LIBFT_FILE = libft/libft.a
 MLX_PATH = minilibx-linux/libmlx.a
@@ -27,7 +27,8 @@ RM 		=	rm -f
 
 $(NAME): $(OBJ)
 	make -C minilibx-linux/
-	$(CC) $(FLAGS) $(OBJ) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -I includes/
+	make -C libft/
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_PATH) $(MLX_FLAGS) $(LIBFT_FILE) -o $(NAME) -I includes/
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@ -I includes/
