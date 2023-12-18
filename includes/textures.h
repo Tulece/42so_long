@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:18:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/17 21:56:20 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:02:59 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define ground_ "./textures/obstacles/ground"
 
 # define collectible_ "./textures/stones/stone"
+
+# define portal_ "./textures/portal/portal"
 
 # define evoli_ "./textures/evolition/evoli"
 

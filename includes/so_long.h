@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/17 22:03:42 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:03:35 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ typedef struct	s_axes
 	int			x;
 	int			y;
 }				t_axes;
+
+typedef struct	s_portal {
+	t_axes	axes;
+	int		state;
+}			t_portal;
 
 typedef struct	s_collectibles {
 	t_axes	axes;
@@ -89,6 +94,7 @@ typedef struct s_assets {
 	t_img	**enemies;
 	t_img	*textures;
 	t_img	*collectibles;
+	t_img	*portal;
 }			t_assets;
 
 typedef struct s_data {
@@ -135,6 +141,10 @@ void	init_textures(t_data *data);
 void	malloc_collectibles(t_data *data);
 char	*init_collectibles_path(t_data *data);
 void	init_collectibles(t_data *data);
+
+void	malloc_portal(t_data *data);
+char	*init_portal_path(t_data *data);
+void	init_portal(t_data *data);
 
 
 #ifdef __linux__
