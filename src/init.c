@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/20 17:19:32 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:59:13 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,18 @@ void	data_init(t_data *data)
 	data->src_pos.x = 0;
 	data->src_pos.y = 0;
 	data->player.state = 0;
+}
+
+char	*path_creator(char *pokemon, int i)
+{
+	char 	*number;
+	char	*str;
+	char	*path;
+
+	number = ft_itoa(i);
+	str = ft_strjoin(pokemon, number);
+	free(number);
+	path = ft_strjoin(str, ".xpm");
+	free(str);
+	return (path);
 }

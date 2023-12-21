@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/20 17:29:23 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:02:28 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@
 # define PLAYER 'P'
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
+
+# define INDEX_LEFT 4
+# define INDEX_RIGHT 6
+# define INDEX_UP 2
+# define INDEX_DOWN 0
 
 typedef struct	s_axes
 {
