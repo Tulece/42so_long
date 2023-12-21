@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 13:05:00 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:48:12 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ int main(int argc, char **argv)
 	init_portal_path(&data);
 	init_portal(&data);
 	display_map(&data);
+	mlx_key_hook(data.win, hook_switch, &data);
+	player_finder(&data);
+	mlx_loop_hook(data.mlx, &anime, &data);
 	mlx_loop(data.mlx);
 }

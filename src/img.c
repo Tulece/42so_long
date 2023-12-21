@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 13:10:03 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:46:10 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	display_map(t_data *data)
 			else if (data->map[i.y][i.x] == '0')
 				print_img(data, data->assets.textures[0].img, i);
 			else if (data->map[i.y][i.x] == 'P')
-				overlay_img(data->assets.player[k][l], data->assets.textures[0], data, i);
+				overlay_img(data->assets.player[data->player.state][data->direction], data->assets.textures[0], data, i);
 			else if (data->map[i.y][i.x] == 'E')
 				overlay_img(data->assets.portal[m], data->assets.textures[0], data, i);
 			else if (data->map[i.y][i.x] == 'C')

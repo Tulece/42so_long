@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 13:03:35 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:29:23 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,21 @@ typedef struct	s_collectibles {
 
 typedef struct	s_player {
 	t_axes				axes;
-	int					stone;
+	int					state;
 	unsigned int		moves;
 
 }						t_player;
 
 typedef struct	s_enemies {
 	t_axes				axes;
-	int					stone;
+	int					state;
 	unsigned int		moves;
 
-}						enemies;
+}						t_enemies;
 
 typedef struct	s_textures {
 	t_axes	axes;
-	int		stone;
+	int		state;
 
 }			t_textures;
 
@@ -109,6 +109,12 @@ typedef struct s_data {
 	t_img		img;
 	t_axes		axes;
 	t_assets	assets;
+	t_player	player;
+	t_enemies	*enemies;
+	int			frame;
+	int			direction;
+	int			clock;
+	t_axes		src_pos;
 }			t_data;
 
 void	data_init(t_data *data);
@@ -146,6 +152,16 @@ void	malloc_portal(t_data *data);
 char	*init_portal_path(t_data *data);
 void	init_portal(t_data *data);
 
+int	hook_switch(int keycode, t_data *data);
+void	player_finder(t_data *data);
+void	moves(t_data *data, t_axes dest_pos);
+int		move_up(t_data *data);
+int		move_down(t_data *data);
+int		move_left(t_data *data);
+int		move_right(t_data *data);
+void	render(t_data *data, t_axes src_pos, t_axes dest_pos);
+void	anime(t_data *data);
+void	quit(t_data *data);
 
 #ifdef __linux__
 # include <X11/keysym.h>

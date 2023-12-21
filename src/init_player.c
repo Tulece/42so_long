@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/15 15:06:08 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:32:08 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,26 @@ void	init_evolis(t_data *data)
 		}
 		i++;
 	}
+}
+
+// void	render(t_data *data, , t_axes src_pos, t_axes dest_pos);
+
+void	anime(t_data *data)
+{
+	if (data->clock != 15)
+		data->clock++;
+	else
+	{
+		data->clock = 0;
+		if (data->frame == 1)
+			data->frame = 0;
+		else
+			data->frame = 1;
+	}
+//	print_img(data, data->assets.textures[0].img, data->src_pos);
+	player_finder(data);
+	printf("player.state = %d\n", data->player.state);
+	overlay_img(data->assets.player[data->player.state][data->direction + data->frame], data->assets.textures[0], data, data->p_pos);
 }
 
 char	*path_creator(char *pokemon, int i)
