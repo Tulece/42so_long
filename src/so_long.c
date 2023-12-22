@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/20 17:48:12 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:29:52 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static int	nb_char(t_data *data, char c)
 
 	i.y = 0;
 	count = 0;
-	while (i.y < data->map_dim.y)
+	while (i.y < data->map.map_dim.y)
 	{
 		i.x = 0;
-		while (i.x < data->map_dim.x)
+		while (i.x < data->map.map_dim.x)
 		{
-			if (data->map[i.y][i.x] == c)
+			if (data->map.map[i.y][i.x] == c)
 				count++;
 			i.x++;
 		}
@@ -48,26 +48,20 @@ int main(int argc, char **argv)
 	if (check_args(argc, argv)!= 0)
 		return (0);
 	i.x = 0;
-	data.map_path = argv[1];
+	data.map.map_path = argv[1];
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (0);
-	data.map = str_to_tab(file_to_str(&data));
-	data.map_dim = map_size(&data);
-	data.win = mlx_new_window(data.mlx, data.map_dim.x * TILE_SIZE, data.map_dim.y * TILE_SIZE , "so_long");
+	data.map.map = str_to_tab(file_to_str(&data));
+	data.map.map_dim = map_size(&data);
+	data.win = mlx_new_window(data.mlx, data.map.map_dim.x * TILE_SIZE, data.map.map_dim.y * TILE_SIZE , "so_long");
 	if (!data.win)
 		return (0);
 	data_init(&data);
-	malloc_evolis(&data);
 	init_evolis(&data);
-	malloc_enemies(&data);
 	init_enemies(&data);
-	malloc_textures(&data);
 	init_textures(&data);
-	malloc_collectibles(&data);
 	init_collectibles(&data);
-	malloc_portal(&data);
-	init_portal_path(&data);
 	init_portal(&data);
 	display_map(&data);
 	mlx_key_hook(data.win, hook_switch, &data);

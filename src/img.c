@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/20 17:46:10 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:07:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	print_img(t_data *data, void *img, t_axes i)
 {
-	mlx_put_image_to_window(data->mlx, data->win, img, i.x * TILE_SIZE, i.y * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, img, i.x * TILE_SIZE,
+		i.y * TILE_SIZE);
 }
 
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
@@ -35,7 +36,6 @@ void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
 					= fg.addr[(j.y * fg.size_line) + (j.x * (fg.bpp / 8) + 1)];
 				bg.addr[(j.y * bg.size_line) + (j.x * (bg.bpp / 8) + 2)]
 					= fg.addr[(j.y * fg.size_line) + (j.x * (fg.bpp / 8) + 2)];
-
 			}
 			j.x++;
 		}
@@ -62,14 +62,15 @@ void	display_map(t_data *data)
 	int		k;
 	int		l;
 	int		m;
+
 	l = 0;
 	k = 0;
 	m = 0;
 	i.y = 0;
-	while (i.y < data->map_dim.y)
+	while (i.y < data->map.map_dim.y)
 	{
 		i.x = 0;
-		while (i.x < data->map_dim.x)
+		while (i.x < data->map.map_dim.x)
 		{
 			if (k == 7)
 				k = 0;
@@ -77,18 +78,23 @@ void	display_map(t_data *data)
 				l = 0;
 			if (m == 5)
 				m = 0;
-			if (data->map[i.y][i.x] == '1')
+			if (data->map.map[i.y][i.x] == '1')
 				print_img(data, data->assets.textures[1].img, i);
-			else if (data->map[i.y][i.x] == '0')
+			else if (data->map.map[i.y][i.x] == '0')
 				print_img(data, data->assets.textures[0].img, i);
-			else if (data->map[i.y][i.x] == 'P')
-				overlay_img(data->assets.player[data->player.state][data->direction], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'E')
-				overlay_img(data->assets.portal[m], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'C')
-				overlay_img(data->assets.collectibles[k], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'Z')
-				overlay_img(data->assets.enemies[k][l], data->assets.textures[0], data, i);
+			else if (data->map.map[i.y][i.x] == 'P')
+				overlay_img(data->assets.player
+				[data->player.state][data->direction],
+					data->assets.textures[0], data, i);
+			else if (data->map.map[i.y][i.x] == 'E')
+				overlay_img(data->assets.portal[m], data->assets.textures[0],
+					data, i);
+			else if (data->map.map[i.y][i.x] == 'C')
+				overlay_img(data->assets.collectibles[k],
+					data->assets.textures[0], data, i);
+			else if (data->map.map[i.y][i.x] == 'Z')
+				overlay_img(data->assets.enemies[k][0],
+					data->assets.textures[0], data, i);
 			i.x++;
 			k++;
 			m++;

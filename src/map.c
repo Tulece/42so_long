@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 21:36:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/14 14:24:04 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:07:52 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 void	ft_error(char *str, t_data *data)
 {
@@ -25,7 +24,7 @@ static int	get_file_size(t_data *data)
 	int		size;
 	char	c;
 
-	fd = open(data->map_path, O_RDONLY);
+	fd = open(data->map.map_path, O_RDONLY);
 	if (fd == -1)
 		ft_error("Error open file", data);
 	size = 0;
@@ -44,7 +43,7 @@ char	*file_to_str(t_data *data)
 	str = malloc(sizeof(char) * (get_file_size(data) + 1));
 	if (!str)
 		ft_error("Error malloc", data);
-	fd = open(data->map_path, O_RDONLY);
+	fd = open(data->map.map_path, O_RDONLY);
 	if (fd == -1)
 		ft_error("Error open file", data);
 	i = 0;
@@ -69,10 +68,10 @@ t_axes	map_size(t_data *data)
 	t_axes	size;
 
 	size.y = 0;
-	while (data->map[size.y])
+	while (data->map.map[size.y])
 		size.y++;
 	size.x = 0;
-	while (data->map[0][size.x])
+	while (data->map.map[0][size.x])
 		size.x++;
 	return (size);
 }

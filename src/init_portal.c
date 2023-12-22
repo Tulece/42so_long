@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_portal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:57:05 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 13:01:51 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:53:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_portal(t_data *data)
 	int		h;
 
 	i = 0;
+	malloc_portal(data);
 	while (i < 6)
 	{
 		str = path_creator(portal_, i);

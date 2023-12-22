@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 14:59:06 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:47:23 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void	malloc_evolis(t_data *data)
 	data->assets.player[7] = (t_img *)malloc(sizeof(t_img) * 8);
 }
 
+// void	render(t_data *data, , t_axes src_pos, t_axes dest_pos);
+
 char	**init_evolis_path(t_data *data)
 {
 	char	**evopaths;
 
-	evopaths = malloc(sizeof( char *) * 9);
+	evopaths = malloc(sizeof(char *) * 9);
 	evopaths[0] = ft_strdup(PATH_EVOLI);
 	evopaths[1] = ft_strdup(PATH_PYROLI);
 	evopaths[2] = ft_strdup(PATH_VOLTALI);
@@ -45,13 +47,12 @@ void	init_evolis(t_data *data)
 {
 	int		i;
 	int		j;
-	char 	*str;
+	char	*str;
 	char	*evolition;
-	int		w;
-	int		h;
-	char 	**evopaths;
+	char	**evopaths;
 
 	i = 0;
+	malloc_evolis(data);
 	evopaths = init_evolis_path(data);
 	while (i < 8)
 	{
@@ -60,12 +61,11 @@ void	init_evolis(t_data *data)
 		while (j < 8)
 		{
 			str = path_creator(evolition, j);
-			data->assets.player[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
+			data->assets.player[i][j].img = mlx_xpm_file_to_image(data->mlx,
+					str, &(int){0}, &(int){0});
 			data->assets.player[i][j].path = str;
 			j++;
 		}
 		i++;
 	}
 }
-
-// void	render(t_data *data, , t_axes src_pos, t_axes dest_pos);

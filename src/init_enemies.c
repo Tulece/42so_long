@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 14:50:48 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:48:46 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ void	init_enemies(t_data *data)
 	int		j;
 	char 	*str;
 	char	*pokemon;
-	int		w;
-	int		h;
 	char 	**enemies_paths;
 
 	i = 0;
+	malloc_enemies(data);
 	enemies_paths = init_enemies_path(data);
 	while (i < 7)
 	{
@@ -58,7 +57,8 @@ void	init_enemies(t_data *data)
 		while (j < 8)
 		{
 			str = path_creator(pokemon, j);
-			data->assets.enemies[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
+			data->assets.enemies[i][j].img = mlx_xpm_file_to_image(data->mlx,
+					str, &(int){0}, &(int){0});
 			data->assets.enemies[i][j].path = str;
 			j++;
 		}

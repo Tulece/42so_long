@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 13:02:28 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:23:37 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,28 @@ typedef struct	s_axes
 }				t_axes;
 
 typedef struct	s_portal {
-	t_axes	axes;
+	t_axes	e_pos;
+	int		nb_e;
 	int		state;
 }			t_portal;
 
 typedef struct	s_collectibles {
-	t_axes	axes;
+	t_axes	c_pos;
+	int		nb_c;
 	int		type;
 }			t_collectibles;
 
 typedef struct	s_player {
-	t_axes				axes;
+	t_axes				p_pos;
+	t_axes				dest_pos;
 	int					state;
-	unsigned int		moves;
-
+	int					nb_p;
+	unsigned int		step_count;
 }						t_player;
 
 typedef struct	s_enemies {
-	t_axes				axes;
+	t_axes				z_pos;
+	int					nb_z;
 	int					state;
 	unsigned int		moves;
 
@@ -80,7 +84,6 @@ typedef struct	s_enemies {
 typedef struct	s_textures {
 	t_axes	axes;
 	int		state;
-
 }			t_textures;
 
 typedef struct s_img {
@@ -102,25 +105,28 @@ typedef struct s_assets {
 	t_img	*portal;
 }			t_assets;
 
-typedef struct s_data {
-	void		*mlx;
-	void		*win;
+typedef struct s_map {
 	char		**map;
-	char		*map_path;
 	t_axes		map_dim;
-	int			img_width;
-	int			img_height;
-	t_axes		p_pos;
-	t_img		img;
-	t_axes		axes;
-	t_assets	assets;
-	t_player	player;
-	t_enemies	*enemies;
-	int			frame;
-	int			direction;
-	int			clock;
-	t_axes		src_pos;
-}			t_data;
+	char		*map_path;
+}				t_map;
+
+typedef struct s_data {
+	void			*mlx;
+	void			*win;
+	int				img_width;
+	int				img_height;
+	t_axes			axes;
+	t_map			map;
+	t_assets		assets;
+	t_player		player;
+	t_enemies		enemies;
+	t_collectibles	collectibles;
+	t_portal		portal;
+	int				frame;
+	int				direction;
+	int				clock;
+}				t_data;
 
 void	data_init(t_data *data);
 void	ft_error(char *str, t_data *data);
