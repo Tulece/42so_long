@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:23:37 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:19:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ typedef struct	s_portal {
 }			t_portal;
 
 typedef struct	s_collectibles {
-	t_axes	c_pos;
-	int		nb_c;
-	int		type;
-}			t_collectibles;
+	t_axes					c_pos;
+	int						stone;
+	struct s_collectibles	*next;
+}							t_collectibles;
 
 typedef struct	s_player {
 	t_axes				p_pos;
@@ -109,6 +109,7 @@ typedef struct s_map {
 	char		**map;
 	t_axes		map_dim;
 	char		*map_path;
+	int			nb_c;
 }				t_map;
 
 typedef struct s_data {
@@ -121,7 +122,7 @@ typedef struct s_data {
 	t_assets		assets;
 	t_player		player;
 	t_enemies		enemies;
-	t_collectibles	collectibles;
+	t_collectibles	*collectibles;
 	t_portal		portal;
 	int				frame;
 	int				direction;
@@ -173,6 +174,13 @@ int		move_right(t_data *data);
 void	render(t_data *data, t_axes src_pos, t_axes dest_pos);
 void	anime(t_data *data);
 void	quit(t_data *data);
+
+t_collectibles	*new_collectible(int stone, t_axes pos);
+int				collec_lst_size(t_collectibles *lst);
+t_collectibles	*collec_last(t_collectibles *lst);
+void			add_collec(t_collectibles **lst, t_collectibles *new_lst);
+void			lst_collec(t_data *data, t_axes pos);
+
 
 #ifdef __linux__
 # include <X11/keysym.h>
