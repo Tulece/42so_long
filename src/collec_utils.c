@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:03:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:56:32 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:05:15 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	lst_collec(t_data *data, t_axes pos)
 	int				i;
 	t_collectibles	*new;
 
+	printf("lst_collc\n");
 	if (data->collectibles == NULL)
 		data->collectibles = new_collectible(pos);
 	else

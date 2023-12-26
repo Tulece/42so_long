@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:13:25 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:50:32 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:16:24 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ void	get_content(t_data *data)
 		i.x = 0;
 		while (i.x < data->map.map_dim.x)
 		{
+			printf("plein non ?\n");
 			if (data->map.map[i.y][i.x] == 'C')
-				lst_collec(data->collectibles, i);
+			{
+				printf("yo\n");
+				lst_collec(data, i);
+			}
 			if (data->map.map[i.y][i.x] == 'Z')
-				lst_enemies(data->enemies, i);
+				lst_enemies(data, i);
 			i.x++;
 		}
 		i.y++;
@@ -97,6 +101,7 @@ int	check_wall(t_data *data)
 
 void	check_map(t_data *data)
 {
+	printf("check_map\n");
 	get_content(data);
 	// check rectangle
 	// check caracteres map(e = 1, p = 1, c > 1)
