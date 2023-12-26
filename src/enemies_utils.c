@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemies_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:54:50 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:10:30 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:59:03 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,13 @@ void	add_enemies(t_enemies **lst, t_enemies *new_lst)
 
 void	lst_enemies(t_data *data, t_axes pos)
 {
-	int				i;
 	t_enemies	*new;
 
-	i = 0;
-	while (i < 8)
+	if (data->enemies == NULL)
+		data->enemies = new_enemies(pos);
+	else
 	{
-		if (data->enemies == NULL)
-			new_enemies(pos);
-		else
-			new = new_enemies(pos);
+		new = new_enemies(pos);
 		add_enemies(&data->enemies, new);
 	}
 }

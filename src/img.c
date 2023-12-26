@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:01:42 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:54:30 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,20 @@ void	displayZP(t_data *data, t_axes i)
 	t_enemies		*actual_enemie;
 
 	actual_collec = data->collectibles;
+	printf("%p\n", data->collectibles);
 	actual_enemie = data->enemies;
+	printf("Hello 1\n");
 	while (actual_collec)
 	{
+		printf("%deme fois", actual_collec->stone);
 		overlay_img(data->assets.collectibles[actual_collec->stone],
 			data->assets.textures[0], data, i);
 		actual_collec = actual_collec->next;
 	}
-	while (data->map.map[i.y][i.x] == 'Z')
+	printf("Hello 2\n");
+	while (actual_enemie)
 	{
+		printf("%deme fois", actual_enemie->state);
 		overlay_img(data->assets.enemies[actual_enemie->state][0],
 			data->assets.textures[0], data, i);
 		actual_enemie = actual_enemie->next;
@@ -108,9 +113,9 @@ void	display_map(t_data *data)
 		{
 			display01(data, i);
 			displayPE(data, i);
-			displayZP(data, i);
 			i.x++;
 		}
 		i.y++;
 	}
+	displayZP(data, i);
 }

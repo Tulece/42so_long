@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:08:37 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:31:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	data_init(t_data *data)
 	data->player.dest_pos.y = 0;
 	data->player.state = 0;
 	data->collectibles = NULL;
+	data->enemies = NULL;
 }
 
 char	*path_creator(char *pokemon, int i)

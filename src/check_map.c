@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:13:25 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:06:53 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:50:32 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	get_content(t_data *data)
 		while (i.x < data->map.map_dim.x)
 		{
 			if (data->map.map[i.y][i.x] == 'C')
-				add_collec(&data->collectibles, new_collectible(i));
+				lst_collec(data->collectibles, i);
 			if (data->map.map[i.y][i.x] == 'Z')
-				add_enemies(&data->enemies, new_enemies(i));
+				lst_enemies(data->enemies, i);
 			i.x++;
 		}
 		i.y++;
@@ -39,10 +39,10 @@ int	is_walkable(char c)
 	return (0);
 }
 
-int	check_rectangle(t_data *data)
-{
+// int	check_rectangle(t_data *data)
+// {
 
-}
+// }
 
 int	is_entity(char c)
 {
@@ -95,10 +95,11 @@ int	check_wall(t_data *data)
 
 // }
 
-// void	check_map()
-// {
-// 	check rectangle
-// 	check caracteres map(e = 1, p = 1, c > 1)
-// 	check path (flood fill) puis destroy ma map si probleme
-// }
+void	check_map(t_data *data)
+{
+	get_content(data);
+	// check rectangle
+	// check caracteres map(e = 1, p = 1, c > 1)
+	// check path (flood fill) puis destroy ma map si probleme
+}
 

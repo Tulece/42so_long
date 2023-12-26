@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_collectibles.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:45:49 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 11:51:00 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:28:04 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	malloc_collectibles(t_data *data)
 {
-	data->assets.collectibles = (t_img *)malloc(sizeof(t_img) * 7);
+	data->assets.collectibles = (t_img *)malloc(sizeof(t_img) * 8);
 }
 
 char	*init_collectibles_path(t_data *data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:06:42 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:41:50 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void	ft_error(char *str, t_data *data);
 char	**str_to_tab(char *str);
 char	*file_to_str(t_data *data);
 t_axes	map_size(t_data *data);
+void	check_map(t_data *data);
 
 void	display01(t_data *data, t_axes i);
 void	displayPE(t_data *data, t_axes i);

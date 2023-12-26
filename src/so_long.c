@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:29:52 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:42:03 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 		return (0);
 	i.x = 0;
 	data.map.map_path = argv[1];
+	check_map(&data);
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (0);
