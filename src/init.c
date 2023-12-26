@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 23:01:13 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:08:37 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,68 @@
 
 void	data_init(t_data *data)
 {
-	data->win = NULL;
-	data->map = NULL;
-	data->map_dim.x = 0;
-	data->map_dim.y = 0;
-	data->nb_collec = 0;
-	data->count = 0;
-	data->p_pos.x = 0;
-	data->p_pos.y = 0;
-	data->c_pos = NULL;
-	data->z_pos = NULL;
+	data->player.nb_p = 0;
+	data->map.nb_z = 0;
+	data->map.nb_c = 0;
+	data->portal.nb_e = 0;
+	data->player.step_count = 0;
+	data->player.p_pos.x = 0;
+	data->player.p_pos.y = 0;
 	data->clock = 0;
+	data->frame = 0;
+	data->direction = 0;
+	data->player.dest_pos.x = 0;
+	data->player.dest_pos.y = 0;
+	data->player.state = 0;
+	data->collectibles = NULL;
 }
 
-void	data_init2(t_data *data)
+char	*path_creator(char *pokemon, int i)
 {
-	data->nb_collec = nb_char(data, 'C');
-	data->nb_enemies = nb_char(data, 'Z');
-	data->assets.portal = malloc(sizeof(t_img) * 6);
-	data->c_pos = malloc(sizeof(t_axes) * data->nb_collec);
-	data->z_pos = malloc(sizeof(t_axes) * data->nb_enemies);
+	char	*number;
+	char	*str;
+	char	*path;
+
+	number = ft_itoa(i);
+	str = ft_strjoin(pokemon, number);
+	free(number);
+	path = ft_strjoin(str, ".xpm");
+	free(str);
+	return (path);
+}
+
+void	player_finder(t_data *data)
+{
+	t_axes	i;
+
+	i.y = 0;
+	while (i.y < data->map.map_dim.y)
+	{
+		i.x = 0;
+		while (i.x < data->map.map_dim.x)
+		{
+			if (data->map.map[i.y][i.x] == 'P')
+				data->player.p_pos = i;
+			i.x++;
+		}
+		i.y++;
+	}
+}
+
+void	enemies_finder(t_data *data)
+{
+	t_axes	i;
+
+	i.y = 0;
+	while (i.y < data->map.map_dim.y)
+	{
+		i.x = 0;
+		while (i.x < data->map.map_dim.x)
+		{
+			if (data->map.map[i.y][i.x] == 'Z')
+				data->enemies->z_pos = i;
+			i.x++;
+		}
+		i.y++;
+	}
 }

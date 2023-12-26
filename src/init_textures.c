@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:27:27 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/17 22:03:47 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:51:45 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_textures(t_data *data)
 	int		h;
 
 	i = 0;
+	malloc_textures(data);
 	while (i < 2)
 {
 		str = path_creator(ground_, i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:18:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 13:02:59 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:54:32 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,34 @@
 
 # define portal_ "./textures/portal/portal"
 
-# define evoli_ "./textures/evolition/evoli"
+# define PATH_EVOLI "./textures/evolition/evoli"
 
-# define pyroli_ "./textures/evolition/pyroli"
+# define PATH_PYROLI "./textures/evolition/pyroli"
 
-# define voltali_ "./textures/evolition/voltali"
+# define PATH_VOLTALI "./textures/evolition/voltali"
 
-# define aquali_ "./textures/evolition/aquali"
+# define PATH_AQUALI "./textures/evolition/aquali"
 
-# define noctali_ "./textures/evolition/noctali"
+# define PATH_NOCTALI "./textures/evolition/noctali"
 
-# define mentali_ "./textures/evolition/mentali"
+# define PATH_MENTALI "./textures/evolition/mentali"
 
-# define phyllali_ "./textures/evolition/phyllali"
+# define PATH_PHYLLALI "./textures/evolition/phyllali"
 
-# define givrali_ "./textures/evolition/givrali"
+# define PATH_GIVRALI "./textures/evolition/givrali"
 
-# define regice_ "./textures/obstacles/regice"
+# define PATH_REGICE "./textures/obstacles/regice"
 
-# define hooh_ "./textures/obstacles/hooh"
+# define PATH_HOOH "./textures/obstacles/hooh"
 
-# define groudon_ "./textures/obstacles/groudon"
+# define PATH_GROUDON "./textures/obstacles/groudon"
 
-# define giratina_ "./textures/obstacles/giratina"
+# define PATH_GIRATINA "./textures/obstacles/giratina"
 
-# define ectoplasma_ "./textures/obstacles/ectoplasma"
+# define PATH_ECTOPLASMA "./textures/obstacles/ectoplasma"
 
-# define kyogre_ "./textures/obstacles/kyogre"
+# define PATH_KYOGRE "./textures/obstacles/kyogre"
 
-# define rayquaza_ "./textures/obstacles/rayquaza"
+# define PATH_RAYQUAZA "./textures/obstacles/rayquaza"
 
 #endif

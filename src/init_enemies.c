@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_enemies.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/15 16:09:46 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:48:46 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ char	**init_enemies_path(t_data *data)
 	char	**enemies_paths;
 
 	enemies_paths = malloc(sizeof( char *) * 8);
-	enemies_paths[0] = ft_strdup(regice_);
-	enemies_paths[1] = ft_strdup(hooh_);
-	enemies_paths[2] = ft_strdup(groudon_);
-	enemies_paths[3] = ft_strdup(kyogre_);
-	enemies_paths[4] = ft_strdup(ectoplasma_);
-	enemies_paths[5] = ft_strdup(rayquaza_);
-	enemies_paths[6] = ft_strdup(giratina_);
+	enemies_paths[0] = ft_strdup(PATH_REGICE);
+	enemies_paths[1] = ft_strdup(PATH_HOOH);
+	enemies_paths[2] = ft_strdup(PATH_GROUDON);
+	enemies_paths[3] = ft_strdup(PATH_KYOGRE);
+	enemies_paths[4] = ft_strdup(PATH_ECTOPLASMA);
+	enemies_paths[5] = ft_strdup(PATH_RAYQUAZA);
+	enemies_paths[6] = ft_strdup(PATH_GIRATINA);
 	return (enemies_paths);
 }
 
@@ -45,11 +45,10 @@ void	init_enemies(t_data *data)
 	int		j;
 	char 	*str;
 	char	*pokemon;
-	int		w;
-	int		h;
 	char 	**enemies_paths;
 
 	i = 0;
+	malloc_enemies(data);
 	enemies_paths = init_enemies_path(data);
 	while (i < 7)
 	{
@@ -58,7 +57,8 @@ void	init_enemies(t_data *data)
 		while (j < 8)
 		{
 			str = path_creator(pokemon, j);
-			data->assets.enemies[i][j].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
+			data->assets.enemies[i][j].img = mlx_xpm_file_to_image(data->mlx,
+					str, &(int){0}, &(int){0});
 			data->assets.enemies[i][j].path = str;
 			j++;
 		}

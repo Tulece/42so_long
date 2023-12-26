@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 23:02:30 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:06:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
 
+# define INDEX_LEFT 4
+# define INDEX_RIGHT 6
+# define INDEX_UP 2
+# define INDEX_DOWN 0
+
 typedef struct	s_axes
 {
 	int			x;
@@ -49,33 +54,35 @@ typedef struct	s_axes
 }				t_axes;
 
 typedef struct	s_portal {
-	t_axes	axes;
+	t_axes	e_pos;
+	int		nb_e;
 	int		state;
 }			t_portal;
 
 typedef struct	s_collectibles {
-	t_axes	axes;
-	int		type;
-}			t_collectibles;
+	t_axes					c_pos;
+	int						stone;
+	struct s_collectibles	*next;
+}							t_collectibles;
 
 typedef struct	s_player {
-	t_axes				axes;
-	int					stone;
-	unsigned int		moves;
-
+	t_axes				p_pos;
+	t_axes				dest_pos;
+	int					state;
+	int					nb_p;
+	unsigned int		step_count;
 }						t_player;
 
 typedef struct	s_enemies {
-	t_axes				axes;
-	int					stone;
+	t_axes				z_pos;
+	int					state;
 	unsigned int		moves;
-
-}						enemies;
+	struct s_enemies	*next;
+}						t_enemies;
 
 typedef struct	s_textures {
 	t_axes	axes;
-	int		stone;
-
+	int		state;
 }			t_textures;
 
 typedef struct s_img {
@@ -97,46 +104,49 @@ typedef struct s_assets {
 	t_img	*portal;
 }			t_assets;
 
-typedef struct s_data {
-	void		*mlx;
-	void		*win;
+typedef struct s_map {
 	char		**map;
-	char		*map_path;
 	t_axes		map_dim;
-	int			img_width;
-	int			img_height;
-	t_axes		p_pos;
-	t_axes		*z_pos;
-	t_axes		*c_pos;
-	t_axes		e_pos;
-	t_img		img;
-	t_axes		axes;
-	t_assets	assets;
-	int			clock;
-	int			nb_collec;
-	int			nb_enemies;
-	int			count;
-}			t_data;
+	char		*map_path;
+	int			nb_c;
+	int			nb_z;
+}				t_map;
+
+typedef struct s_data {
+	void			*mlx;
+	void			*win;
+	int				img_width;
+	int				img_height;
+	t_axes			axes;
+	t_map			map;
+	t_assets		assets;
+	t_player		player;
+	t_enemies		*enemies;
+	t_collectibles	*collectibles;
+	t_portal		portal;
+	int				frame;
+	int				direction;
+	int				clock;
+}				t_data;
 
 void	data_init(t_data *data);
-void	data_init2(t_data *data);
 void	ft_error(char *str, t_data *data);
 char	**str_to_tab(char *str);
 char	*file_to_str(t_data *data);
 t_axes	map_size(t_data *data);
 
+void	display01(t_data *data, t_axes i);
+void	displayPE(t_data *data, t_axes i);
+void	displayZP(t_data *data, t_axes i);
 void	display_map(t_data *data);
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i);
 void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i);
 
 int		hook_switch(int keycode, t_data *data);
-// void	quit(t_data *data);
 int		key_press(int keycode, t_data *data);
-
 void	malloc_evolis(t_data *data);
 char	**init_evolis_path(t_data *data);
 void	init_evolis(t_data *data);
-
 void	print_img(t_data *data, void *img, t_axes i);
 char	*path_creator(char *pokemon, int i);
 
@@ -156,31 +166,30 @@ void	malloc_portal(t_data *data);
 char	*init_portal_path(t_data *data);
 void	init_portal(t_data *data);
 
-int		nb_char(t_data *data, char c);
-void	destroy(t_data *data);
-void	end(t_data *data);
+int	hook_switch(int keycode, t_data *data);
+void	player_finder(t_data *data);
+void	enemies_finder(t_data *data);
+void	moves(t_data *data, t_axes dest_pos);
+int		move_up(t_data *data);
+int		move_down(t_data *data);
+int		move_left(t_data *data);
+int		move_right(t_data *data);
+void	render(t_data *data, t_axes src_pos, t_axes dest_pos);
+void	anime(t_data *data);
+void	anime_player(t_data *data);
+void	quit(t_data *data);
 
-void	find_p_pos(t_data *data);
+t_collectibles	*new_collectible(t_axes pos);
+int				collec_lst_size(t_collectibles *lst);
+t_collectibles	*collec_last(t_collectibles *lst);
+void			add_collec(t_collectibles **lst, t_collectibles *new_lst);
+void			lst_collec(t_data *data, t_axes pos);
+t_enemies		*new_enemies(t_axes pos);
+int				enemies_lst_size(t_enemies *lst);
+t_enemies		*enemies_last(t_enemies *lst);
+void			add_enemies(t_enemies **lst, t_enemies *new_lst);
+void			lst_enemies(t_data *data, t_axes pos);
 
-int		is_entity(char c);
-int		check_wall(t_data *data);
-void	set_entity(t_data *data, t_axes i, int *j, int *j_z);
-void	get_entity_pos(t_data *data);
-void	check_map(t_data *data);
-
-int	is_valid_point(t_axes point, t_data *data);
-int	dfs(t_axes pos, t_axes end, t_data *data, int **visited);
-void	destroy_visited(int **visited, t_data *game);
-int	path_exist(t_axes start, t_axes end, t_data *data);
-
-void	move(t_data *data, t_axes new_pos);
-void	reload(t_data *data, t_axes new_pos);
-void	move_up(t_data *data);
-void	move_down(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
-
-int	close_window(t_data *data);
 
 #ifdef __linux__
 # include <X11/keysym.h>

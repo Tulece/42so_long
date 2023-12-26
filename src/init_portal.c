@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:57:05 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 15:45:27 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:53:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ char	*init_portal_path(t_data *data)
 
 void	init_portal(t_data *data)
 {
-	t_portal	portal;
 	int		i;
 	char 	*str;
 	int		w;
 	int		h;
 
 	i = 0;
+	malloc_portal(data);
 	while (i < 6)
 	{
 		str = path_creator(portal_, i);

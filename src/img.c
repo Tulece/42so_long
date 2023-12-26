@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/18 19:24:54 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:01:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	print_img(t_data *data, void *img, t_axes i)
 {
-	mlx_put_image_to_window(data->mlx, data->win, img, i.x * TILE_SIZE, i.y * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, img, i.x * TILE_SIZE,
+		i.y * TILE_SIZE);
 }
 
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
@@ -35,7 +36,6 @@ void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i)
 					= fg.addr[(j.y * fg.size_line) + (j.x * (fg.bpp / 8) + 1)];
 				bg.addr[(j.y * bg.size_line) + (j.x * (bg.bpp / 8) + 2)]
 					= fg.addr[(j.y * fg.size_line) + (j.x * (fg.bpp / 8) + 2)];
-
 			}
 			j.x++;
 		}
@@ -56,57 +56,61 @@ void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i)
 	merge_img(back, fg, data, i);
 }
 
-void	display_map(t_data *data)
+void	display01(t_data *data, t_axes i)
 {
-	t_axes	i;
-	int		k;
-	int		l;
-	int		m;
-	l = 0;
-	k = 0;
-	m = 0;
-	i.y = 0;
-	while (i.y < data->map_dim.y)
+	if (data->map.map[i.y][i.x] == '1')
+					print_img(data, data->assets.textures[1].img, i);
+				else if (data->map.map[i.y][i.x] == '0')
+					print_img(data, data->assets.textures[0].img, i);
+}
+
+void	displayPE(t_data *data, t_axes	i)
+{
+	if (data->map.map[i.y][i.x] == 'P')
+		overlay_img(data->assets.player
+		[data->player.state][data->direction],
+			data->assets.textures[0], data, i);
+	else if (data->map.map[i.y][i.x] == 'E')
+		overlay_img(data->assets.portal[0], data->assets.textures[0],
+			data, i);
+}
+
+void	displayZP(t_data *data, t_axes i)
+{
+	t_collectibles	*actual_collec;
+	t_enemies		*actual_enemie;
+
+	actual_collec = data->collectibles;
+	actual_enemie = data->enemies;
+	while (actual_collec)
 	{
-		i.x = 0;
-		while (i.x < data->map_dim.x)
-		{
-			if (k == 7)
-				k = 0;
-			if (l == 7)
-				l = 0;
-			if (m == 6)
-				m = 0;
-			if (data->map[i.y][i.x] == '1')
-				print_img(data, data->assets.textures[1].img, i);
-			else if (data->map[i.y][i.x] == '0')
-				print_img(data, data->assets.textures[0].img, i);
-			else if (data->map[i.y][i.x] == 'P')
-				overlay_img(data->assets.player[k][l], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'E')
-				overlay_img(data->assets.portal[m], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'C')
-				overlay_img(data->assets.collectibles[k], data->assets.textures[0], data, i);
-			else if (data->map[i.y][i.x] == 'Z')
-				overlay_img(data->assets.enemies[k][l], data->assets.textures[0], data, i);
-			i.x++;
-			k++;
-			m++;
-		}
-		i.y++;
-		l++;
+		overlay_img(data->assets.collectibles[actual_collec->stone],
+			data->assets.textures[0], data, i);
+		actual_collec = actual_collec->next;
+	}
+	while (data->map.map[i.y][i.x] == 'Z')
+	{
+		overlay_img(data->assets.enemies[actual_enemie->state][0],
+			data->assets.textures[0], data, i);
+		actual_enemie = actual_enemie->next;
 	}
 }
 
-// void	render_portal(t_data *data)
-// {
-// 	if (clock % 5 == 0)
-// 	{
+void	display_map(t_data *data)
+{
+	t_axes	i;
 
-// 	}
-// }
-// void	anime(t_data *data)
-// {
-// 	render_portal(data);
-// 	data->clock++;
-// }
+	i.y = 0;
+	while (i.y < data->map.map_dim.y)
+	{
+		i.x = 0;
+		while (i.x < data->map.map_dim.x)
+		{
+			display01(data, i);
+			displayPE(data, i);
+			displayZP(data, i);
+			i.x++;
+		}
+		i.y++;
+	}
+}
