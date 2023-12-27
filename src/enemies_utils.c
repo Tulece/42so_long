@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:54:50 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 15:41:53 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:29:40 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_enemies	*new_enemies(t_axes pos)
 
 int	enemies_lst_size(t_enemies *lst)
 {
-	int				size;
+	int			size;
 	t_enemies	*aux;
 
 	size = 0;
@@ -50,7 +50,7 @@ int	enemies_lst_size(t_enemies *lst)
 
 t_enemies	*enemies_last(t_enemies *lst)
 {
-	int				size;
+	int			size;
 	t_enemies	*aux;
 
 	size = enemies_lst_size(lst);

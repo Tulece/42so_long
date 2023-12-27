@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_collectibles.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:45:49 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:28:04 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:35:40 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ void	init_collectibles(t_data *data)
 		data->assets.collectibles[i].path = str;
 		i++;
 	}
+}
+
+t_collectibles	*find_by_pos(t_data *data, t_axes pos)
+{
+	t_collectibles	*collec;
+
+	collec = data->collectibles;
+	while (collec)
+	{
+		if (collec->c_pos.x == pos.x && collec->c_pos.y == pos.y)
+			return (collec);
+		collec = collec->next;
+	}
+	return (NULL);
 }

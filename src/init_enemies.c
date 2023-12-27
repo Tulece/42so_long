@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 11:48:46 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:22:48 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**init_enemies_path(t_data *data)
 {
 	char	**enemies_paths;
 
-	enemies_paths = malloc(sizeof( char *) * 8);
+	enemies_paths = malloc(sizeof(char *) * 8);
 	enemies_paths[0] = ft_strdup(PATH_REGICE);
 	enemies_paths[1] = ft_strdup(PATH_HOOH);
 	enemies_paths[2] = ft_strdup(PATH_GROUDON);
@@ -43,9 +43,9 @@ void	init_enemies(t_data *data)
 {
 	int		i;
 	int		j;
-	char 	*str;
+	char	*str;
 	char	*pokemon;
-	char 	**enemies_paths;
+	char	**enemies_paths;
 
 	i = 0;
 	malloc_enemies(data);

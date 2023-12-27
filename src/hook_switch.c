@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:24:01 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 15:39:00 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:30:02 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	quit(t_data *data)
 int	hook_switch(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
-			quit(data);
+		quit(data);
 	if (keycode == KEY_W)
 	{
 		move_up(data);

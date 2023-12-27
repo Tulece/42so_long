@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:13:25 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 16:21:14 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:24:30 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	is_walkable(char c)
 
 // int	check_rectangle(t_data *data)
 // {
-
 // }
 
 int	is_entity(char c)
@@ -98,8 +97,8 @@ int	check_wall(t_data *data)
 void	check_map(t_data *data)
 {
 	get_content(data);
-	// check rectangle
-	// check caracteres map(e = 1, p = 1, c > 1)
-	// check path (flood fill) puis destroy ma map si probleme
 }
 
+// check rectangle
+// check caracteres map(e = 1, p = 1, c > 1)
+// check path (flood fill) puis destroy ma map si probleme

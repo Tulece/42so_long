@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collec_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:03:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 14:00:12 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:31:05 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,4 @@ void	lst_collec(t_data *data, t_axes pos)
 		new = new_collectible(pos);
 		add_collec(&data->collectibles, new);
 	}
-}
-
-t_collectibles	*find_by_pos(t_data *data, t_axes pos)
-{
-	t_collectibles *collec;
-
-	collec = data->collectibles;
-	while (collec)
-	{
-		if (collec->c_pos.x == pos.x && collec->c_pos.y == pos.y)
-			return (collec);
-		collec = collec->next;
-	}
-	return (NULL);
 }

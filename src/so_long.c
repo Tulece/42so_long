@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:13:43 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:40:20 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static int	nb_char(t_data *data, char c)
 	return (count);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_axes	i;
 
-	if (check_args(argc, argv)!= 0)
+	if (check_args(argc, argv) != 0)
 		return (0);
 	i.x = 0;
 	data.map.map_path = argv[1];
@@ -56,16 +56,11 @@ int main(int argc, char **argv)
 	data.map.map_dim = map_size(&data);
 	data_init(&data);
 	check_map(&data);
-	data.win = mlx_new_window(data.mlx, data.map.map_dim.x * TILE_SIZE, data.map.map_dim.y * TILE_SIZE , "so_long");
+	data.win = mlx_new_window(data.mlx, data.map.map_dim.x * TILE_SIZE, \
+		data.map.map_dim.y * TILE_SIZE, "so_long");
 	if (!data.win)
 		return (0);
-	init_evolis(&data);
-	init_enemies(&data);
-	init_textures(&data);
-	init_collectibles(&data);
-	init_portal(&data);
-	exit_finder(&data);
-	player_finder(&data);
+	full_init(&data);
 	display_map(&data);
 	mlx_key_hook(data.win, hook_switch, &data);
 	mlx_loop_hook(data.mlx, &anime, &data);

@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 16:16:47 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:39:55 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,13 @@ int		is_walkable(char c);
 void	check_map(t_data *data);
 
 void	display01(t_data *data, t_axes i);
-void	displayPE(t_data *data, t_axes i);
-void	displayZP(t_data *data, t_axes i);
+void	display_pe(t_data *data, t_axes i);
+void	display_zc(t_data *data, t_axes i);
 void	display_map(t_data *data);
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i);
 void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i);
+
+void	full_init(t_data *data);
 
 int		hook_switch(int keycode, t_data *data);
 int		key_press(int keycode, t_data *data);
@@ -174,6 +176,7 @@ void	player_finder(t_data *data);
 void	enemies_finder(t_data *data);
 void	collec_finder(t_data *data);
 void	exit_finder(t_data *data);
+void	evolve(t_data *data, t_axes dest_pos);
 
 int	hook_switch(int keycode, t_data *data);
 

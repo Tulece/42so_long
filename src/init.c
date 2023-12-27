@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 15:40:38 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:40:55 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,76 +47,13 @@ char	*path_creator(char *pokemon, int i)
 	return (path);
 }
 
-
-void	exit_finder(t_data *data)
+void	full_init(t_data *data)
 {
-	t_axes	i;
-
-	i.y = 0;
-	while (i.y < data->map.map_dim.y)
-	{
-		i.x = 0;
-		while (i.x < data->map.map_dim.x)
-		{
-			if (data->map.map[i.y][i.x] == 'E')
-				data->portal.e_pos = i;
-			i.x++;
-		}
-		i.y++;
-	}
-}
-
-
-void	player_finder(t_data *data)
-{
-	t_axes	i;
-
-	i.y = 0;
-	while (i.y < data->map.map_dim.y)
-	{
-		i.x = 0;
-		while (i.x < data->map.map_dim.x)
-		{
-			if (data->map.map[i.y][i.x] == 'P')
-				data->player.p_pos = i;
-			i.x++;
-		}
-		i.y++;
-	}
-}
-
-void	enemies_finder(t_data *data)
-{
-	t_axes	i;
-
-	i.y = 0;
-	while (i.y < data->map.map_dim.y)
-	{
-		i.x = 0;
-		while (i.x < data->map.map_dim.x)
-		{
-			if (data->map.map[i.y][i.x] == 'Z')
-				lst_enemies(data, i);
-			i.x++;
-		}
-		i.y++;
-	}
-}
-
-void	collec_finder(t_data *data)
-{
-	t_axes	i;
-
-	i.y = 0;
-	while (i.y < data->map.map_dim.y)
-	{
-		i.x = 0;
-		while (i.x < data->map.map_dim.x)
-		{
-			if (data->map.map[i.y][i.x] == 'C')
-				lst_collec(data, i);
-			i.x++;
-		}
-		i.y++;
-	}
+	init_evolis(data);
+	init_enemies(data);
+	init_textures(data);
+	init_collectibles(data);
+	init_portal(data);
+	exit_finder(data);
+	player_finder(data);
 }

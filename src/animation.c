@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 15:45:45 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:31:35 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	anime_player(t_data *data)
 
 void	anime_ennemies(t_data *data)
 {
-	t_enemies *enemies;
+	t_enemies	*enemies;
 
 	enemies = data->enemies;
 	while (enemies)
@@ -47,4 +47,13 @@ void	anime(t_data *data)
 	}
 	anime_player(data);
 	anime_ennemies(data);
+}
+
+void	evolve(t_data *data, t_axes dest_pos)
+{
+	t_collectibles	*collec;
+
+	collec = find_by_pos(data, dest_pos);
+	if (data->map.map[dest_pos.y][dest_pos.x] == 'C' && data->player.state < 8)
+		data->player.state = collec->stone;
 }
