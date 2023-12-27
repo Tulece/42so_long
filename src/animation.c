@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:42:59 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:45:45 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,27 @@
 void	anime_player(t_data *data)
 {
 	overlay_img(data->assets.player
-	[data->player.state][data->direction + data->frame],
+	[data->player.state][data->player.direction + data->frame],
 		data->assets.textures[0], data, data->player.p_pos);
 }
 
 void	anime_ennemies(t_data *data)
 {
-	overlay_img(data->assets.enemies
-	[data->enemies->state][data->direction + data->frame],
-		data->assets.textures[0], data, data->enemies->z_pos);
+	t_enemies *enemies;
+
+	enemies = data->enemies;
+	while (enemies)
+	{
+		overlay_img(data->assets.enemies
+		[enemies->state][enemies->direction + data->frame],
+			data->assets.textures[0], data, enemies->z_pos);
+		enemies = enemies->next;
+	}
 }
 
 void	anime(t_data *data)
 {
-	if (data->clock != 15)
+	if (data->clock != 1)
 		data->clock++;
 	else
 	{
@@ -39,4 +46,5 @@ void	anime(t_data *data)
 			data->frame = 1;
 	}
 	anime_player(data);
+	anime_ennemies(data);
 }

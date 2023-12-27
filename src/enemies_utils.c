@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemies_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:54:50 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:21:40 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:41:53 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_enemies	*new_enemies(t_axes pos)
 	if (!new)
 		return (NULL);
 	new->state = enemie;
+	new->direction = 0;
 	new->next = NULL;
 	new->z_pos = pos;
 	if (enemie < 7)

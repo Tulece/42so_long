@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:32:37 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:40:38 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	data_init(t_data *data)
 	data->player.p_pos.y = 0;
 	data->clock = 0;
 	data->frame = 0;
-	data->direction = 0;
+	data->player.direction = 0;
 	data->player.dest_pos.x = 0;
 	data->player.dest_pos.y = 0;
 	data->player.state = 0;

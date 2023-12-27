@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:13:25 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 12:42:59 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:21:14 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_content(t_data *data)
 
 int	is_walkable(char c)
 {
-	if (c == 'C' || c == 'E' || c == '0' || c == 'P')
+	if (c == 'C' || c == 'E' || c == '0' || c == 'P' || c == 'Z')
 		return (1);
 	return (0);
 }

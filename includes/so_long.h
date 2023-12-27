@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:37:27 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:16:47 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct	s_player {
 	int					state;
 	int					nb_p;
 	unsigned int		step_count;
+	int				direction;
 }						t_player;
 
 typedef struct	s_enemies {
@@ -78,6 +79,7 @@ typedef struct	s_enemies {
 	int					state;
 	unsigned int		moves;
 	struct s_enemies	*next;
+	int					direction;
 }						t_enemies;
 
 typedef struct	s_textures {
@@ -102,6 +104,7 @@ typedef struct s_assets {
 	t_img	*textures;
 	t_img	*collectibles;
 	t_img	*portal;
+	t_img	attack;
 }			t_assets;
 
 typedef struct s_map {
@@ -125,7 +128,6 @@ typedef struct s_data {
 	t_collectibles	*collectibles;
 	t_portal		portal;
 	int				frame;
-	int				direction;
 	int				clock;
 }				t_data;
 
@@ -134,6 +136,7 @@ void	ft_error(char *str, t_data *data);
 char	**str_to_tab(char *str);
 char	*file_to_str(t_data *data);
 t_axes	map_size(t_data *data);
+int		is_walkable(char c);
 void	check_map(t_data *data);
 
 void	display01(t_data *data, t_axes i);

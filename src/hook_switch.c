@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:24:01 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 13:03:18 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:39:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ int	hook_switch(int keycode, t_data *data)
 	if (keycode == KEY_W)
 	{
 		move_up(data);
-		data->direction = INDEX_UP;
+		data->player.direction = INDEX_UP;
 	}
 	else if (keycode == KEY_A)
 	{
 		move_left(data);
-		data->direction = INDEX_LEFT;
+		data->player.direction = INDEX_LEFT;
 	}
 	else if (keycode == KEY_S)
 	{
 		move_down(data);
-		data->direction = INDEX_DOWN;
+		data->player.direction = INDEX_DOWN;
 	}
 	else if (keycode == KEY_D)
 	{
 		move_right(data);
-		data->direction = INDEX_RIGHT;
+		data->player.direction = INDEX_RIGHT;
 	}
 	return (0);
 }

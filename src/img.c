@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 13:27:02 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:39:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	display01(t_data *data, t_axes i)
 void	displayPE(t_data *data, t_axes	i)
 {
 		overlay_img(data->assets.player
-		[data->player.state][data->direction],
+		[data->player.state][data->player.direction],
 			data->assets.textures[0], data, data->player.p_pos);
 		overlay_img(data->assets.portal[0], data->assets.textures[0],
 			data, data->portal.e_pos);

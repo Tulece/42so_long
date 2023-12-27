@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:27:27 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 11:51:45 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:15:29 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	init_textures(t_data *data)
 	i = 0;
 	malloc_textures(data);
 	while (i < 2)
-{
+	{
 		str = path_creator(ground_, i);
 		data->assets.textures[i].img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
 		data->assets.textures[i].path = str;
 		i++;
 	}
+	// data->assets.attack.img = mlx_xpm_file_to_image
+	// 	(data->mlx, "./textures/attack.xpm", &(int){0}, &(int){0});
 }
