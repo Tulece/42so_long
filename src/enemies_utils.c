@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:54:50 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:59:03 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:21:40 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_enemies	*new_enemies(t_axes pos)
 	t_enemies	*new;
 	static int	enemie;
 
-	enemie = 0;
+	if (!enemie)
+		enemie = 0;
 	new = (t_enemies *)malloc(sizeof(t_enemies));
 	if (!new)
 		return (NULL);
@@ -26,6 +27,8 @@ t_enemies	*new_enemies(t_axes pos)
 	new->z_pos = pos;
 	if (enemie < 7)
 		enemie++;
+	if (enemie >= 7)
+		enemie = 0;
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:03:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 16:05:15 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:00:12 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ t_collectibles	*new_collectible(t_axes pos)
 	t_collectibles	*new;
 	static int		collectible;
 
-	collectible = 0;
+	if (!collectible)
+		collectible = 0;
 	new = (t_collectibles *)malloc(sizeof(t_collectibles));
 	if (!new)
 		return (NULL);
 	new->stone = collectible;
 	new->next = NULL;
 	new->c_pos = pos;
-	if (collectible < 7)
+	if (collectible <= 7)
 		collectible++;
+	if (collectible > 7)
+		collectible = 0;
 	return (new);
 }
 
@@ -77,12 +80,27 @@ void	lst_collec(t_data *data, t_axes pos)
 	int				i;
 	t_collectibles	*new;
 
-	printf("lst_collc\n");
 	if (data->collectibles == NULL)
+	{
 		data->collectibles = new_collectible(pos);
+	}
 	else
 	{
 		new = new_collectible(pos);
 		add_collec(&data->collectibles, new);
 	}
+}
+
+t_collectibles	*find_by_pos(t_data *data, t_axes pos)
+{
+	t_collectibles *collec;
+
+	collec = data->collectibles;
+	while (collec)
+	{
+		if (collec->c_pos.x == pos.x && collec->c_pos.y == pos.y)
+			return (collec);
+		collec = collec->next;
+	}
+	return (NULL);
 }

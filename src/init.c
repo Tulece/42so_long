@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:31:42 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:32:37 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	data_init(t_data *data)
 	data->map.nb_z = 0;
 	data->map.nb_c = 0;
 	data->portal.nb_e = 0;
+	data->portal.e_pos.y = 0;
+	data->portal.e_pos.x = 0;
 	data->player.step_count = 0;
 	data->player.p_pos.x = 0;
 	data->player.p_pos.y = 0;
@@ -44,6 +46,26 @@ char	*path_creator(char *pokemon, int i)
 	free(str);
 	return (path);
 }
+
+
+void	exit_finder(t_data *data)
+{
+	t_axes	i;
+
+	i.y = 0;
+	while (i.y < data->map.map_dim.y)
+	{
+		i.x = 0;
+		while (i.x < data->map.map_dim.x)
+		{
+			if (data->map.map[i.y][i.x] == 'E')
+				data->portal.e_pos = i;
+			i.x++;
+		}
+		i.y++;
+	}
+}
+
 
 void	player_finder(t_data *data)
 {
@@ -74,7 +96,25 @@ void	enemies_finder(t_data *data)
 		while (i.x < data->map.map_dim.x)
 		{
 			if (data->map.map[i.y][i.x] == 'Z')
-				data->enemies->z_pos = i;
+				lst_enemies(data, i);
+			i.x++;
+		}
+		i.y++;
+	}
+}
+
+void	collec_finder(t_data *data)
+{
+	t_axes	i;
+
+	i.y = 0;
+	while (i.y < data->map.map_dim.y)
+	{
+		i.x = 0;
+		while (i.x < data->map.map_dim.x)
+		{
+			if (data->map.map[i.y][i.x] == 'C')
+				lst_collec(data, i);
 			i.x++;
 		}
 		i.y++;

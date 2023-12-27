@@ -3,23 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:59:49 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:28:18 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:45:06 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	evolve(t_data *data, t_axes dest_pos)
+{
+	t_collectibles	*collec;
+
+	collec = find_by_pos(data, dest_pos);
+	if (data->map.map[dest_pos.y][dest_pos.x] == 'C' && data->player.state < 8)
+		data->player.state = collec->stone;
+}
+
 void	moves(t_data *data, t_axes dest_pos)
 {
+	evolve(data, dest_pos);
 	print_img(data, data->assets.textures[0].img, data->player.p_pos);
 	overlay_img(data->assets.player[data->player.state][data->direction],
 		data->assets.textures[0], data, dest_pos);
 	data->map.map[dest_pos.y][dest_pos.x] = 'P';
 	data->map.map[data->player.p_pos.y][data->player.p_pos.x] = '0';
+	data->player.p_pos = dest_pos;
 }
+
+// data->player.p_pos : si on a bouge la fonction reste telle quelle mais je devrai rajouter une condition en cas de mur
 
 int	move_up(t_data *data)
 {

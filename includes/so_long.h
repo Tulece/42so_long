@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 13:41:50 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:37:27 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,13 @@ void	malloc_portal(t_data *data);
 char	*init_portal_path(t_data *data);
 void	init_portal(t_data *data);
 
-int	hook_switch(int keycode, t_data *data);
 void	player_finder(t_data *data);
 void	enemies_finder(t_data *data);
+void	collec_finder(t_data *data);
+void	exit_finder(t_data *data);
+
+int	hook_switch(int keycode, t_data *data);
+
 void	moves(t_data *data, t_axes dest_pos);
 int		move_up(t_data *data);
 int		move_down(t_data *data);
@@ -190,6 +194,7 @@ int				enemies_lst_size(t_enemies *lst);
 t_enemies		*enemies_last(t_enemies *lst);
 void			add_enemies(t_enemies **lst, t_enemies *new_lst);
 void			lst_enemies(t_data *data, t_axes pos);
+t_collectibles	*find_by_pos(t_data *data, t_axes pos);
 
 
 #ifdef __linux__

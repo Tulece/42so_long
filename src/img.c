@@ -6,7 +6,7 @@
 /*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 16:01:28 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:27:02 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,37 +66,30 @@ void	display01(t_data *data, t_axes i)
 
 void	displayPE(t_data *data, t_axes	i)
 {
-	if (data->map.map[i.y][i.x] == 'P')
 		overlay_img(data->assets.player
 		[data->player.state][data->direction],
-			data->assets.textures[0], data, i);
-	else if (data->map.map[i.y][i.x] == 'E')
+			data->assets.textures[0], data, data->player.p_pos);
 		overlay_img(data->assets.portal[0], data->assets.textures[0],
-			data, i);
+			data, data->portal.e_pos);
 }
 
-void	displayZP(t_data *data, t_axes i)
+void	displayZC(t_data *data, t_axes i)
 {
 	t_collectibles	*actual_collec;
 	t_enemies		*actual_enemie;
 
 	actual_collec = data->collectibles;
-	printf("%p\n", data->collectibles);
 	actual_enemie = data->enemies;
-	printf("Hello 1\n");
 	while (actual_collec)
 	{
-		printf("%deme fois", actual_collec->stone);
 		overlay_img(data->assets.collectibles[actual_collec->stone],
-			data->assets.textures[0], data, i);
+			data->assets.textures[0], data, actual_collec->c_pos);
 		actual_collec = actual_collec->next;
 	}
-	printf("Hello 2\n");
 	while (actual_enemie)
 	{
-		printf("%deme fois", actual_enemie->state);
 		overlay_img(data->assets.enemies[actual_enemie->state][0],
-			data->assets.textures[0], data, i);
+			data->assets.textures[0], data, actual_enemie->z_pos);
 		actual_enemie = actual_enemie->next;
 	}
 }
@@ -112,10 +105,10 @@ void	display_map(t_data *data)
 		while (i.x < data->map.map_dim.x)
 		{
 			display01(data, i);
-			displayPE(data, i);
 			i.x++;
 		}
 		i.y++;
 	}
-	displayZP(data, i);
+	displayPE(data, i);
+	displayZC(data, i);
 }

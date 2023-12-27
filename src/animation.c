@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/26 12:07:58 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:42:59 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	anime_player(t_data *data)
 {
-	player_finder(data);
 	overlay_img(data->assets.player
 	[data->player.state][data->direction + data->frame],
 		data->assets.textures[0], data, data->player.p_pos);
@@ -22,10 +21,9 @@ void	anime_player(t_data *data)
 
 void	anime_ennemies(t_data *data)
 {
-	enemies_finder(data);
-	overlay_img(data->assets.player
-	[data->player.state][data->direction + data->frame],
-		data->assets.textures[0], data, data->player.p_pos);
+	overlay_img(data->assets.enemies
+	[data->enemies->state][data->direction + data->frame],
+		data->assets.textures[0], data, data->enemies->z_pos);
 }
 
 void	anime(t_data *data)

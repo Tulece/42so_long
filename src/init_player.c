@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anporced <anporced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 11:47:23 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:56:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ char	**init_evolis_path(t_data *data)
 	evopaths = malloc(sizeof(char *) * 9);
 	evopaths[0] = ft_strdup(PATH_EVOLI);
 	evopaths[1] = ft_strdup(PATH_PYROLI);
-	evopaths[2] = ft_strdup(PATH_VOLTALI);
-	evopaths[3] = ft_strdup(PATH_AQUALI);
-	evopaths[4] = ft_strdup(PATH_MENTALI);
-	evopaths[5] = ft_strdup(PATH_PHYLLALI);
+	evopaths[2] = ft_strdup(PATH_AQUALI);
+	evopaths[3] = ft_strdup(PATH_VOLTALI);
+	evopaths[4] = ft_strdup(PATH_NOCTALI);
+	evopaths[5] = ft_strdup(PATH_MENTALI);
 	evopaths[6] = ft_strdup(PATH_GIVRALI);
-	evopaths[7] = ft_strdup(PATH_NOCTALI);
+	evopaths[7] = ft_strdup(PATH_PHYLLALI);
 	return (evopaths);
 }
 
