@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:31:35 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:47:13 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,30 @@ void	anime_ennemies(t_data *data)
 	}
 }
 
+void	anime_exit(t_data *data)
+{
+	if (data->player.got_c == data->map.nb_c)
+	{
+		if (data->portal.state < 6 && data->portal.anim_direction == 0)
+		{
+			data->portal.state++;
+			if (data->portal.state == 5)
+				data->portal.anim_direction = 1;
+		}
+		else if (data->portal.state >= 0 && data->portal.anim_direction == 1)
+		{
+			data->portal.state--;
+			if (data->portal.state == 0)
+				data->portal.anim_direction = 0;
+		}
+	}
+	overlay_img(data->assets.portal[data->portal.state],
+		data->assets.textures[0], data, data->portal.e_pos);
+}
+
 void	anime(t_data *data)
 {
+	enemies_clock(data);
 	if (data->clock != 1)
 		data->clock++;
 	else
@@ -47,6 +69,8 @@ void	anime(t_data *data)
 	}
 	anime_player(data);
 	anime_ennemies(data);
+	anime_exit(data);
+	// usleep(5000);
 }
 
 void	evolve(t_data *data, t_axes dest_pos)

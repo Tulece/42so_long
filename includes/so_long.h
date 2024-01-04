@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:39:55 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:44:23 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct	s_portal {
 	t_axes	e_pos;
 	int		nb_e;
 	int		state;
+	int		anim_direction;
 }			t_portal;
 
 typedef struct	s_collectibles {
@@ -70,12 +71,14 @@ typedef struct	s_player {
 	t_axes				dest_pos;
 	int					state;
 	int					nb_p;
+	int					got_c;
 	unsigned int		step_count;
-	int				direction;
+	int					direction;
 }						t_player;
 
 typedef struct	s_enemies {
 	t_axes				z_pos;
+	t_axes				dest_pos;
 	int					state;
 	unsigned int		moves;
 	struct s_enemies	*next;
@@ -129,6 +132,7 @@ typedef struct s_data {
 	t_portal		portal;
 	int				frame;
 	int				clock;
+	int				z_clock;
 }				t_data;
 
 void	data_init(t_data *data);
@@ -185,7 +189,19 @@ int		move_up(t_data *data);
 int		move_down(t_data *data);
 int		move_left(t_data *data);
 int		move_right(t_data *data);
+
+void	initialize_random(void);
+int		generate_random_number(void);
+
+int		enemies_switch(t_data *data);
+void	enemies_clock(t_data *data);
+int		z_move_up(t_data *data, t_enemies *enemies);
+int		z_move_down(t_data *data, t_enemies *enemies);
+int		z_move_left(t_data *data, t_enemies *enemies);
+int		z_move_right(t_data *data, t_enemies *enemies);
+
 void	render(t_data *data, t_axes src_pos, t_axes dest_pos);
+void	enemies_moves(t_data *data, t_axes dest_pos, t_enemies *enemies);
 void	anime(t_data *data);
 void	anime_player(t_data *data);
 void	quit(t_data *data);

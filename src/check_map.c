@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:13:25 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:24:30 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:45:17 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	get_content(t_data *data)
 		}
 		i.y++;
 	}
+	data->map.nb_c = collec_lst_size(data->collectibles);
 }
 
 int	is_walkable(char c)
 {
-	if (c == 'C' || c == 'E' || c == '0' || c == 'P' || c == 'Z')
+	if (c == 'C' || c == 'E' || c == '0' || c == 'P')
 		return (1);
 	return (0);
 }

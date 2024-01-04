@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:40:55 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:49:29 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,26 @@ void	data_init(t_data *data)
 	data->portal.nb_e = 0;
 	data->portal.e_pos.y = 0;
 	data->portal.e_pos.x = 0;
+	data->portal.state = 0;
 	data->player.step_count = 0;
 	data->player.p_pos.x = 0;
 	data->player.p_pos.y = 0;
+	data->enemies->z_pos.y = 0;
+	data->enemies->z_pos.x = 0;
 	data->clock = 0;
 	data->frame = 0;
 	data->player.direction = 0;
 	data->player.dest_pos.x = 0;
 	data->player.dest_pos.y = 0;
+	data->enemies->direction = 0;
+	data->enemies->dest_pos.x = 0;
+	data->enemies->dest_pos.y = 0;
 	data->player.state = 0;
+	data->enemies->state = 0;
 	data->collectibles = NULL;
 	data->enemies = NULL;
+	data->player.got_c = 0;
+	data->portal.anim_direction = 0;
 }
 
 char	*path_creator(char *pokemon, int i)
