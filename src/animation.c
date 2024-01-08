@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/04 13:47:13 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:45:30 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	anime(t_data *data)
 	anime_player(data);
 	anime_ennemies(data);
 	anime_exit(data);
-	// usleep(5000);
 }
 
 void	evolve(t_data *data, t_axes dest_pos)

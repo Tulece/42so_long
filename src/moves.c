@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:59:49 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/02 20:15:21 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:38:42 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	move_up(t_data *data)
 {
 	t_axes	dest;
 
-	player_finder(data);
 	data->player.direction = 2;
 	dest.x = data->player.p_pos.x;
 	dest.y = data->player.p_pos.y - 1;
@@ -47,7 +46,6 @@ int	move_down(t_data *data)
 {
 	t_axes	dest;
 
-	player_finder(data);
 	data->player.direction = 0;
 	dest.x = data->player.p_pos.x;
 	dest.y = data->player.p_pos.y + 1;
@@ -58,7 +56,6 @@ int	move_left(t_data *data)
 {
 	t_axes	dest;
 
-	player_finder(data);
 	data->player.direction = 4;
 	dest.x = data->player.p_pos.x - 1;
 	dest.y = data->player.p_pos.y;
@@ -69,7 +66,6 @@ int	move_right(t_data *data)
 {
 	t_axes	dest;
 
-	player_finder(data);
 	data->player.direction = 6;
 	dest.x = data->player.p_pos.x + 1;
 	dest.y = data->player.p_pos.y;

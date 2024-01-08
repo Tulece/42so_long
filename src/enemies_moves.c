@@ -6,28 +6,15 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:14:54 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/04 13:43:26 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:14:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	initialize_random(void)
-{
-	srand(time(NULL));
-}
-
-int	generate_random_number(void)
-{
-	int	random_num;
-
-	random_num = rand() % 4;
-	return (random_num);
-}
-
 void	enemies_moves(t_data *data, t_axes dest_pos, t_enemies *enemies)
 {
-	if (is_walkable(data->map.map[dest_pos.y][dest_pos.x]))
+	if (z_is_walkable(data->map.map[dest_pos.y][dest_pos.x], data))
 	{
 		print_img(data, data->assets.textures[0].img, enemies->z_pos);
 		overlay_img(data->assets.enemies
@@ -81,19 +68,4 @@ int	z_move_right(t_data *data, t_enemies *enemies)
 	dest.x = enemies->z_pos.x + 1;
 	dest.y = enemies->z_pos.y;
 	enemies_moves(data, dest, enemies);
-}
-
-void	enemies_clock(t_data *data)
-{
-	if (data->z_clock != 1)
-		data->z_clock++;
-	else
-	{
-		data->z_clock = 0;
-		if (data->frame == 1)
-			data->frame = 0;
-		else
-			data->frame = 1;
-	}
-	enemies_switch(data);
 }

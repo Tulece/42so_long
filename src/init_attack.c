@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_textures.c                                    :+:      :+:    :+:   */
+/*   init_attack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 22:27:27 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/08 17:47:17 by anporced         ###   ########.fr       */
+/*   Created: 2024/01/08 17:47:23 by anporced          #+#    #+#             */
+/*   Updated: 2024/01/08 17:57:43 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	malloc_textures(t_data *data)
+void	malloc_attack(t_data *data)
 {
-	data->assets.textures = (t_img *)malloc(sizeof(t_img) * 2);
+	data->assets.attack.img = (t_img *)malloc(sizeof(t_img));
 }
 
-char	*init_textures_path(t_data *data)
-{
-	char	*textures;
-
-	textures = ft_strdup(ground_);
-	return (textures);
-}
-
-void	init_textures(t_data *data)
+void	init_attack(t_data *data)
 {
 	int		i;
 	char	*str;
@@ -33,13 +25,11 @@ void	init_textures(t_data *data)
 	int		h;
 
 	i = 0;
-	malloc_textures(data);
-	while (i < 2)
-	{
-		str = path_creator(ground_, i);
-		data->assets.textures[i].img = mlx_xpm_file_to_image
-			(data->mlx, str, &w, &h);
-		data->assets.textures[i].path = str;
-		i++;
-	}
+	malloc_attack(data);
+	str = "./textures/attack.xpm";
+	data->assets.attack.img = mlx_xpm_file_to_image(data->mlx, str, &w, &h);
+	data->assets.attack.path = str;
+	data->assets.attack.addr = mlx_get_data_addr
+		(data->assets.attack.img, data->assets.attack.bpp,
+			data->assets.attack.size_line, data->assets.attack.endian);
 }

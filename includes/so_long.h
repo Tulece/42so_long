@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/04 13:44:23 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:55:27 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,20 @@
 # include <sys/stat.h>
 # include <math.h>
 # include <time.h>
+# include <limits.h>
 
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
+# define RED 0xFF0101
+# define BLUE 0x0101FF
+# define YELLOW 0xFFFF01
+# define BLACK 0x010101
+# define PURPLE 0x800180
+# define ICE_BLUE 0xAFDCEC
+# define GREEN 0x018001
 
 # define TILE_SIZE 64
 
@@ -41,6 +49,7 @@
 # define PLAYER 'P'
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
+# define ATTACK ' '
 
 # define INDEX_LEFT 4
 # define INDEX_RIGHT 6
@@ -133,6 +142,7 @@ typedef struct s_data {
 	int				frame;
 	int				clock;
 	int				z_clock;
+	int				color;
 }				t_data;
 
 void	data_init(t_data *data);
@@ -149,6 +159,10 @@ void	display_zc(t_data *data, t_axes i);
 void	display_map(t_data *data);
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i);
 void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i);
+
+void	merge_attack(t_img bg, t_img fg, t_data *data, int color);
+void	overlay_attack(t_img fg, t_data *data, t_axes i, int color);
+void	attack(t_data *data);
 
 void	full_init(t_data *data);
 
@@ -176,6 +190,9 @@ void	malloc_portal(t_data *data);
 char	*init_portal_path(t_data *data);
 void	init_portal(t_data *data);
 
+void	malloc_attack(t_data *data);
+void	init_attack(t_data *data);
+
 void	player_finder(t_data *data);
 void	enemies_finder(t_data *data);
 void	collec_finder(t_data *data);
@@ -192,6 +209,8 @@ int		move_right(t_data *data);
 
 void	initialize_random(void);
 int		generate_random_number(void);
+void	z_move(t_data *data, int random_num, t_enemies *enemies);
+int		z_is_walkable(char c, t_data *data);
 
 int		enemies_switch(t_data *data);
 void	enemies_clock(t_data *data);
