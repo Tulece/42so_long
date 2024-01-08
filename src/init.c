@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/08 17:45:36 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:39:15 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	full_init(t_data *data)
 	init_textures(data);
 	init_collectibles(data);
 	init_portal(data);
+	init_attack(data);
 	exit_finder(data);
 	player_finder(data);
 }

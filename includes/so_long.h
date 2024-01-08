@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/08 17:55:27 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:55:39 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	display_map(t_data *data);
 void	merge_img(t_img bg, t_img fg, t_data *data, t_axes i);
 void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i);
 
-void	merge_attack(t_img bg, t_img fg, t_data *data, int color);
+void	merge_attack(t_img bg, t_img fg, t_data *data, int color, t_axes i);
 void	overlay_attack(t_img fg, t_data *data, t_axes i, int color);
 void	attack(t_data *data);
 
