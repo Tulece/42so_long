@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   enemies_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 13:03:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 15:21:21 by anporced         ###   ########.fr       */
+/*   Created: 2023/12/26 12:54:50 by anporced          #+#    #+#             */
+/*   Updated: 2023/12/27 20:29:40 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_collectibles	*new_collectible(int stone, t_axes pos)
+t_enemies	*new_enemies(t_axes pos)
 {
-	t_collectibles	*new;
+	t_enemies	*new;
+	static int	enemie;
 
-	new = (t_collectibles *)malloc(sizeof(t_collectibles));
+	if (!enemie)
+		enemie = 0;
+	new = (t_enemies *)malloc(sizeof(t_enemies));
 	if (!new)
 		return (NULL);
-	new->stone = stone;
+	new->state = enemie;
+	new->direction = 0;
 	new->next = NULL;
-	new->c_pos = pos;
+	new->z_pos = pos;
+	if (enemie < 7)
+		enemie++;
+	if (enemie >= 7)
+		enemie = 0;
 	return (new);
 }
 
-int	collec_lst_size(t_collectibles *lst)
+int	enemies_lst_size(t_enemies *lst)
 {
-	int		size;
-	t_collectibles	*aux;
+	int			size;
+	t_enemies	*aux;
 
 	size = 0;
 	aux = lst;
@@ -40,12 +48,12 @@ int	collec_lst_size(t_collectibles *lst)
 	return (size);
 }
 
-t_collectibles	*collec_last(t_collectibles *lst)
+t_enemies	*enemies_last(t_enemies *lst)
 {
-	int		size;
-	t_collectibles	*aux;
+	int			size;
+	t_enemies	*aux;
 
-	size = collec_lst_size(lst);
+	size = enemies_lst_size(lst);
 	aux = lst;
 	while (size > 1)
 	{
@@ -55,31 +63,28 @@ t_collectibles	*collec_last(t_collectibles *lst)
 	return (aux);
 }
 
-void	add_collec(t_collectibles **lst, t_collectibles *new_lst)
+void	add_enemies(t_enemies **lst, t_enemies *new_lst)
 {
-	t_collectibles	*aux;
+	t_enemies	*aux;
 
 	if (!*lst)
 	{
 		*lst = new_lst;
 		return ;
 	}
-	aux = collec_last(*lst);
+	aux = enemies_last(*lst);
 	aux->next = new_lst;
 }
 
-void	lst_collec(t_data *data, t_axes pos)
+void	lst_enemies(t_data *data, t_axes pos)
 {
-	int				i;
-	t_collectibles	*new;
+	t_enemies	*new;
 
-	i = 0;
-	while (i < 8)
+	if (data->enemies == NULL)
+		data->enemies = new_enemies(pos);
+	else
 	{
-		if (data->collectibles == NULL)
-			new_collectible(i, pos);
-		else
-			new = new_collectible(i, pos);
-		add_collec(&data->collectibles, new);
+		new = new_enemies(pos);
+		add_enemies(&data->enemies, new);
 	}
 }

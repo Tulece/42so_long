@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:15:20 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:07:00 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:21:47 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,52 +54,4 @@ void	overlay_img(t_img fg, t_img bg, t_data *data, t_axes i)
 	back.addr = mlx_get_data_addr(back.img, &back.bpp, &back.size_line,
 			&back.endian);
 	merge_img(back, fg, data, i);
-}
-
-void	display_map(t_data *data)
-{
-	t_axes	i;
-	int		k;
-	int		l;
-	int		m;
-
-	l = 0;
-	k = 0;
-	m = 0;
-	i.y = 0;
-	while (i.y < data->map.map_dim.y)
-	{
-		i.x = 0;
-		while (i.x < data->map.map_dim.x)
-		{
-			if (k == 7)
-				k = 0;
-			if (l == 7)
-				l = 0;
-			if (m == 5)
-				m = 0;
-			if (data->map.map[i.y][i.x] == '1')
-				print_img(data, data->assets.textures[1].img, i);
-			else if (data->map.map[i.y][i.x] == '0')
-				print_img(data, data->assets.textures[0].img, i);
-			else if (data->map.map[i.y][i.x] == 'P')
-				overlay_img(data->assets.player
-				[data->player.state][data->direction],
-					data->assets.textures[0], data, i);
-			else if (data->map.map[i.y][i.x] == 'E')
-				overlay_img(data->assets.portal[m], data->assets.textures[0],
-					data, i);
-			else if (data->map.map[i.y][i.x] == 'C')
-				overlay_img(data->assets.collectibles[k],
-					data->assets.textures[0], data, i);
-			else if (data->map.map[i.y][i.x] == 'Z')
-				overlay_img(data->assets.enemies[k][0],
-					data->assets.textures[0], data, i);
-			i.x++;
-			k++;
-			m++;
-		}
-		i.y++;
-		l++;
-	}
 }

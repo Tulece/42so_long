@@ -6,15 +6,58 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:26:48 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:51:08 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	anime_player(t_data *data)
+{
+	overlay_img(data->assets.player
+	[data->player.state][data->player.direction + data->frame],
+		data->assets.textures[0], data, data->player.p_pos);
+}
+
+void	anime_ennemies(t_data *data)
+{
+	t_enemies	*enemies;
+
+	enemies = data->enemies;
+	while (enemies)
+	{
+		overlay_img(data->assets.enemies
+		[enemies->state][enemies->direction + data->frame],
+			data->assets.textures[0], data, enemies->z_pos);
+		enemies = enemies->next;
+	}
+}
+
+void	anime_exit(t_data *data)
+{
+	if (data->player.got_c == data->map.nb_c)
+	{
+		if (data->portal.state < 6 && data->portal.anim_direction == 0)
+		{
+			data->portal.state++;
+			if (data->portal.state == 5)
+				data->portal.anim_direction = 1;
+		}
+		else if (data->portal.state >= 0 && data->portal.anim_direction == 1)
+		{
+			data->portal.state--;
+			if (data->portal.state == 0)
+				data->portal.anim_direction = 0;
+		}
+	}
+	overlay_img(data->assets.portal[data->portal.state],
+		data->assets.textures[0], data, data->portal.e_pos);
+}
+
 void	anime(t_data *data)
 {
-	if (data->clock != 15)
+	enemies_clock(data);
+	if (data->clock != 1)
 		data->clock++;
 	else
 	{
@@ -24,8 +67,16 @@ void	anime(t_data *data)
 		else
 			data->frame = 1;
 	}
-	player_finder(data);
-	overlay_img(data->assets.player
-	[data->player.state][data->direction + data->frame],
-		data->assets.textures[0], data, data->player.p_pos);
+	anime_player(data);
+	anime_ennemies(data);
+	anime_exit(data);
+}
+
+void	evolve(t_data *data, t_axes dest_pos)
+{
+	t_collectibles	*collec;
+
+	collec = find_by_pos(data, dest_pos);
+	if (data->map.map[dest_pos.y][dest_pos.x] == 'C' && data->player.state < 8)
+		data->player.state = collec->stone;
 }

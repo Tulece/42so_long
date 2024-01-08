@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 12:29:52 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/08 12:55:14 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static int	nb_char(t_data *data, char c)
 	return (count);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_axes	i;
 
-	if (check_args(argc, argv)!= 0)
+	if (check_args(argc, argv) != 0)
 		return (0);
 	i.x = 0;
 	data.map.map_path = argv[1];
@@ -54,18 +54,15 @@ int main(int argc, char **argv)
 		return (0);
 	data.map.map = str_to_tab(file_to_str(&data));
 	data.map.map_dim = map_size(&data);
-	data.win = mlx_new_window(data.mlx, data.map.map_dim.x * TILE_SIZE, data.map.map_dim.y * TILE_SIZE , "so_long");
+	data_init(&data);
+	check_map(&data);
+	data.win = mlx_new_window(data.mlx, data.map.map_dim.x * TILE_SIZE, \
+		data.map.map_dim.y * TILE_SIZE, "so_long");
 	if (!data.win)
 		return (0);
-	data_init(&data);
-	init_evolis(&data);
-	init_enemies(&data);
-	init_textures(&data);
-	init_collectibles(&data);
-	init_portal(&data);
+	full_init(&data);
 	display_map(&data);
 	mlx_key_hook(data.win, hook_switch, &data);
-	player_finder(&data);
 	mlx_loop_hook(data.mlx, &anime, &data);
 	mlx_loop(data.mlx);
 }

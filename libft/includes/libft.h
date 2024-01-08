@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:56:26 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 17:00:38 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:02:20 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <stdio.h>
 # include "ft_printf.h"
-# include "get_next_line.h"
 
 //libc functions
 

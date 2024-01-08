@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 21:36:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/22 15:13:16 by anporced         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:27:46 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_error(char *str, t_data *data)
 {
 	printf("%s\n", str);
-	// end(data);
 }
+	// end(data);
 
 static int	get_file_size(t_data *data)
 {
@@ -75,4 +75,3 @@ t_axes	map_size(t_data *data)
 		size.x++;
 	return (size);
 }
-
