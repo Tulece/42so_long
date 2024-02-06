@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:03:41 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 17:22:24 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:39:24 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-size_t	ft_nbrlen(int nbr, int base)
+size_t	ft_printf_nbrlen(int nbr, int base)
 {
 	size_t	len;
 

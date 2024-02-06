@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:18:17 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:22:48 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:24:18 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	malloc_enemies(t_data *data)
 	data->assets.enemies[6] = (t_img *)malloc(sizeof(t_img) * 8);
 }
 
-char	**init_enemies_path(t_data *data)
+char	**init_enemies_path(void)
 {
 	char	**enemies_paths;
 
 	enemies_paths = malloc(sizeof(char *) * 8);
-	enemies_paths[0] = ft_strdup(PATH_REGICE);
+	enemies_paths[0] = ft_strdup(PATH_PALKIA);
 	enemies_paths[1] = ft_strdup(PATH_HOOH);
 	enemies_paths[2] = ft_strdup(PATH_GROUDON);
 	enemies_paths[3] = ft_strdup(PATH_KYOGRE);
-	enemies_paths[4] = ft_strdup(PATH_ECTOPLASMA);
+	enemies_paths[4] = ft_strdup(PATH_DIALGA);
 	enemies_paths[5] = ft_strdup(PATH_RAYQUAZA);
 	enemies_paths[6] = ft_strdup(PATH_GIRATINA);
 	return (enemies_paths);
@@ -49,7 +49,7 @@ void	init_enemies(t_data *data)
 
 	i = 0;
 	malloc_enemies(data);
-	enemies_paths = init_enemies_path(data);
+	enemies_paths = init_enemies_path();
 	while (i < 7)
 	{
 		j = 0;
@@ -64,4 +64,5 @@ void	init_enemies(t_data *data)
 		}
 		i++;
 	}
+	free_enemies_path(enemies_paths);
 }

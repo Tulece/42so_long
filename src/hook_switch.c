@@ -6,47 +6,38 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:24:01 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/08 13:06:07 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:38:27 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	quit(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	exit(0);
-}
-
 int	hook_switch(int keycode, t_data *data)
 {
-	// printf("%d\n", keycode);
 	if (keycode == KEY_ESC)
 		quit(data);
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_UP)
 	{
 		move_up(data);
 		data->player.direction = INDEX_UP;
 	}
-	else if (keycode == KEY_A)
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
 	{
 		move_left(data);
 		data->player.direction = INDEX_LEFT;
 	}
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
 	{
 		move_down(data);
 		data->player.direction = INDEX_DOWN;
 	}
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 	{
 		move_right(data);
 		data->player.direction = INDEX_RIGHT;
 	}
+	else if (keycode == ATTACK && data->player.state != 0)
+		attack(data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:57:05 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:28:16 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:44:29 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 void	malloc_portal(t_data *data)
 {
 	data->assets.portal = (t_img *)malloc(sizeof(t_img) * 6);
-}
-
-char	*init_portal_path(t_data *data)
-{
-	char	*portal_paths;
-
-	portal_paths = ft_strdup(portal_);
-	return (portal_paths);
 }
 
 void	init_portal(t_data *data)
@@ -36,7 +28,7 @@ void	init_portal(t_data *data)
 	malloc_portal(data);
 	while (i < 6)
 	{
-		str = path_creator(portal_, i);
+		str = path_creator(PORTAL, i);
 		data->assets.portal[i].img = mlx_xpm_file_to_image
 			(data->mlx, str, &w, &h);
 		data->assets.portal[i].path = str;

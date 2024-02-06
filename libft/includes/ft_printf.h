@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:04:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 18:11:33 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:38:52 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int		ft_putchar(int c);
 int		ft_putstr(char *str);
 int		ft_putnbr(int nbr);
-size_t	ft_nbrlen(int nbr, int base);
+size_t	ft_printf_nbrlen(int nbr, int base);
 size_t	ft_nbrlen_unsigned(unsigned long long nbr, int base);
 int		ft_putnbr_unsigned(unsigned int nbr);
 int		ft_putnbr_hex(unsigned long long nbr);

@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:56:35 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/04 16:51:08 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:08:36 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 
 void	anime_player(t_data *data)
 {
-	overlay_img(data->assets.player
-	[data->player.state][data->player.direction + data->frame],
-		data->assets.textures[0], data, data->player.p_pos);
+	t_axes	dest_pos;
+
+	dest_pos = data->player.p_pos;
+	if (data->player_glow)
+	{
+		overlay_img(data->assets.evolutions[data->player.direction / 2],
+			data->assets.textures[0], data, dest_pos);
+		data->player_glow = 0;
+		printf("a\n");
+	}
+	else
+		overlay_img(data->assets.player
+		[data->player.state][data->player.direction + data->frame],
+			data->assets.textures[0], data, data->player.p_pos);
 }
 
 void	anime_ennemies(t_data *data)
@@ -54,12 +65,10 @@ void	anime_exit(t_data *data)
 		data->assets.textures[0], data, data->portal.e_pos);
 }
 
-void	anime(t_data *data)
+int	anime(t_data *data)
 {
 	enemies_clock(data);
-	if (data->clock != 1)
-		data->clock++;
-	else
+	if (data->clock == 1)
 	{
 		data->clock = 0;
 		if (data->frame == 1)
@@ -67,9 +76,14 @@ void	anime(t_data *data)
 		else
 			data->frame = 1;
 	}
+	else
+		data->clock++;
 	anime_player(data);
 	anime_ennemies(data);
 	anime_exit(data);
+	mlx_do_sync(data->mlx);
+	usleep(70000);
+	return (0);
 }
 
 void	evolve(t_data *data, t_axes dest_pos)
@@ -78,5 +92,13 @@ void	evolve(t_data *data, t_axes dest_pos)
 
 	collec = find_by_pos(data, dest_pos);
 	if (data->map.map[dest_pos.y][dest_pos.x] == 'C' && data->player.state < 8)
+	{
+		data->player.got_c++;
 		data->player.state = collec->stone;
+		data->map.map[dest_pos.y][dest_pos.x] = '0';
+		overlay_img(data->assets.evolutions[data->player.direction / 2],
+			data->assets.textures[0], data, dest_pos);
+		mlx_do_sync(data->mlx);
+		usleep(27000);
+	}
 }

@@ -6,16 +6,11 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:51:36 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/04 16:54:38 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:22:47 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	initialize_random(void)
-{
-	srand(time(NULL));
-}
 
 int	generate_random_number(void)
 {
@@ -40,13 +35,55 @@ void	enemies_clock(t_data *data)
 		data->z_clock++;
 }
 
-int	z_is_walkable(char c, t_data *data)
+int	z_is_walkable(char c, t_data *data, t_axes dest_pos)
 {
-	if (c == '0' || c == 'P')
-	{
-		if (c == 'P' && data->player.state != 0)
-			return (0);
+	if ((dest_pos.x == data->player.p_pos.x
+			&& dest_pos.y == data->player.p_pos.y) && data->player.state > 0)
+		return (0);
+	if (z_find_by_pos(data, dest_pos))
+		return (0);
+	if (c == '0' || (c == 'P' && data->player.state == 0))
 		return (1);
+	else
+		return (0);
+}
+
+t_enemies	*z_find_by_pos(t_data *data, t_axes pos)
+{
+	t_enemies	*enemies;
+
+	enemies = data->enemies;
+	while (enemies)
+	{
+		if (enemies->z_pos.x == pos.x && enemies->z_pos.y == pos.y)
+			return (enemies);
+		enemies = enemies->next;
 	}
-	return (0);
+	return (NULL);
+}
+
+void	delete_enemy_by_pos(t_data *data, t_axes pos)
+{
+	t_enemies	*current;
+	t_enemies	*prev;
+
+	current = data->enemies;
+	prev = NULL;
+	if (current != NULL && current->z_pos.x == pos.x
+		&& current->z_pos.y == pos.y)
+	{
+		data->enemies = current->next;
+		free(current);
+		return ;
+	}
+	while (current != NULL && (current->z_pos.x != pos.x
+			|| current->z_pos.y != pos.y))
+	{
+		prev = current;
+		current = current->next;
+	}
+	if (current == NULL)
+		return ;
+	prev->next = current->next;
+	free(current);
 }

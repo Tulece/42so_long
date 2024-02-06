@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:14:54 by anporced          #+#    #+#             */
-/*   Updated: 2024/01/08 13:14:00 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:27:01 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 void	enemies_moves(t_data *data, t_axes dest_pos, t_enemies *enemies)
 {
-	if (z_is_walkable(data->map.map[dest_pos.y][dest_pos.x], data))
+	if (z_is_walkable(data->map.map[dest_pos.y][dest_pos.x], data, dest_pos))
 	{
 		print_img(data, data->assets.textures[0].img, enemies->z_pos);
 		overlay_img(data->assets.enemies
 		[enemies->state][enemies->direction],
 			data->assets.textures[0], data, dest_pos);
-		data->map.map[dest_pos.y][dest_pos.x] = 'Z';
 		data->map.map[enemies->z_pos.y][enemies->z_pos.x] = '0';
 		enemies->z_pos = dest_pos;
 	}
@@ -28,9 +27,10 @@ void	enemies_moves(t_data *data, t_axes dest_pos, t_enemies *enemies)
 		overlay_img(data->assets.enemies
 		[enemies->state][enemies->direction],
 			data->assets.textures[0], data, enemies->z_pos);
+	lose_game(data);
 }
 
-int	z_move_up(t_data *data, t_enemies *enemies)
+void	z_move_up(t_data *data, t_enemies *enemies)
 {
 	t_axes	dest;
 
@@ -40,7 +40,7 @@ int	z_move_up(t_data *data, t_enemies *enemies)
 	enemies_moves(data, dest, enemies);
 }
 
-int	z_move_down(t_data *data, t_enemies *enemies)
+void	z_move_down(t_data *data, t_enemies *enemies)
 {
 	t_axes	dest;
 
@@ -50,7 +50,7 @@ int	z_move_down(t_data *data, t_enemies *enemies)
 	enemies_moves(data, dest, enemies);
 }
 
-int	z_move_left(t_data *data, t_enemies *enemies)
+void	z_move_left(t_data *data, t_enemies *enemies)
 {
 	t_axes	dest;
 
@@ -60,7 +60,7 @@ int	z_move_left(t_data *data, t_enemies *enemies)
 	enemies_moves(data, dest, enemies);
 }
 
-int	z_move_right(t_data *data, t_enemies *enemies)
+void	z_move_right(t_data *data, t_enemies *enemies)
 {
 	t_axes	dest;
 

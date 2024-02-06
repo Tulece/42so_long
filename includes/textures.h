@@ -6,47 +6,53 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:18:03 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/21 14:54:32 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/04 11:01:09 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURES_H
 # define TEXTURES_H
 
-# define ground_ "./textures/obstacles/ground"
+# define WIN "./textures/utils/win.xpm"
 
-# define collectible_ "./textures/stones/stone"
+# define LOSE "./textures/utils/lose.xpm"
 
-# define portal_ "./textures/portal/portal"
+# define GROUND "./textures/utils/ground"
 
-# define PATH_EVOLI "./textures/evolition/evoli"
+# define COLLECTIBLE "./textures/stones/stone"
 
-# define PATH_PYROLI "./textures/evolition/pyroli"
+# define PORTAL "./textures/portal/portal"
 
-# define PATH_VOLTALI "./textures/evolition/voltali"
+# define EVOLUTIONS "./textures/evolutions/evolution"
 
-# define PATH_AQUALI "./textures/evolition/aquali"
+# define PATH_EVOLI "./textures/player/evoli"
 
-# define PATH_NOCTALI "./textures/evolition/noctali"
+# define PATH_PYROLI "./textures/player/pyroli"
 
-# define PATH_MENTALI "./textures/evolition/mentali"
+# define PATH_VOLTALI "./textures/player/voltali"
 
-# define PATH_PHYLLALI "./textures/evolition/phyllali"
+# define PATH_AQUALI "./textures/player/aquali"
 
-# define PATH_GIVRALI "./textures/evolition/givrali"
+# define PATH_NOCTALI "./textures/player/noctali"
 
-# define PATH_REGICE "./textures/obstacles/regice"
+# define PATH_MENTALI "./textures/player/mentali"
 
-# define PATH_HOOH "./textures/obstacles/hooh"
+# define PATH_PHYLLALI "./textures/player/phyllali"
 
-# define PATH_GROUDON "./textures/obstacles/groudon"
+# define PATH_GIVRALI "./textures/player/givrali"
 
-# define PATH_GIRATINA "./textures/obstacles/giratina"
+# define PATH_PALKIA "./textures/enemies/palkia"
 
-# define PATH_ECTOPLASMA "./textures/obstacles/ectoplasma"
+# define PATH_HOOH "./textures/enemies/hooh"
 
-# define PATH_KYOGRE "./textures/obstacles/kyogre"
+# define PATH_GROUDON "./textures/enemies/groudon"
 
-# define PATH_RAYQUAZA "./textures/obstacles/rayquaza"
+# define PATH_GIRATINA "./textures/enemies/giratina"
+
+# define PATH_DIALGA "./textures/enemies/dialga"
+
+# define PATH_KYOGRE "./textures/enemies/kyogre"
+
+# define PATH_RAYQUAZA "./textures/enemies/rayquaza"
 
 #endif

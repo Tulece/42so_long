@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:48:31 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:23:42 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:07:07 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	malloc_evolis(t_data *data)
 	data->assets.player[7] = (t_img *)malloc(sizeof(t_img) * 8);
 }
 
-char	**init_evolis_path(t_data *data)
+char	**init_evolis_path(void)
 {
 	char	**evopaths;
 
@@ -51,7 +51,7 @@ void	init_evolis(t_data *data)
 
 	i = 0;
 	malloc_evolis(data);
-	evopaths = init_evolis_path(data);
+	evopaths = init_evolis_path();
 	while (i < 8)
 	{
 		j = 0;
@@ -66,4 +66,5 @@ void	init_evolis(t_data *data)
 		}
 		i++;
 	}
+	free_evolis_path(evopaths);
 }

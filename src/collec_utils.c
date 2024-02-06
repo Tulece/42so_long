@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:03:38 by anporced          #+#    #+#             */
-/*   Updated: 2023/12/27 20:31:05 by anporced         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:28:30 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	add_collec(t_collectibles **lst, t_collectibles *new_lst)
 
 void	lst_collec(t_data *data, t_axes pos)
 {
-	int				i;
 	t_collectibles	*new;
 
 	if (data->collectibles == NULL)
