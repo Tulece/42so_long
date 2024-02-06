@@ -23,11 +23,9 @@ int	check_args(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_data	data;
-	t_axes	i;
 
 	if (check_args(ac, av) != 0)
 		return (0);
-	i.x = 0;
 	data.map.map_path = av[1];
 	data.mlx = mlx_init();
 	if (!data.mlx)
