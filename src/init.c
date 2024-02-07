@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:57:03 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/06 21:18:30 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:31:28 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	data_init(t_data *data)
 
 void	data_init2(t_data *data)
 {
+	data->map.map = NULL;
+	data->map.map_checker = NULL;
 	data->clock = 0;
 	data->z_clock = 0;
 	data->frame = 0;

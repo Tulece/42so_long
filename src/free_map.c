@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_winlose.c                                     :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 20:39:07 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/07 11:20:56 by anporced         ###   ########.fr       */
+/*   Created: 2024/02/07 11:34:20 by anporced          #+#    #+#             */
+/*   Updated: 2024/02/07 13:10:19 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	free_winlose_screen(t_data *data)
+void	free_map(t_data *data)
 {
-	free(data->assets.win);
-	free(data->assets.lose);
+	int	i;
+
+	if (data->map.map_checker == NULL)
+		return ;
+	i = -1;
+	while (++i < data->map.map_dim.y)
+		free(data->map.map_checker[i]);
+	free(data->map.map_checker);
 }
 
-void	destroy_winlose_screen(t_data *data)
+void    free_true_map(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->assets.win->img);
-//	free(data->assets.win->path);
-	mlx_destroy_image(data->mlx, data->assets.lose->img);
-//	free(data->assets.lose->path);
-	free_winlose_screen(data);
+	int	i;
+
+	i = -1;
+ 	while (++i < data->map.map_dim.y)
+		free(data->map.map[i]);
+	free(data->map.map);
 }
+

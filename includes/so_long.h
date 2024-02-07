@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/06 20:55:35 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:45:02 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,5 +308,8 @@ void			destroy_portal(t_data *data);
 void			free_winlose_screen(t_data *data);
 void			destroy_winlose_screen(t_data *data);
 
+
+void    		free_map(t_data *data);
+void			free_true_map(t_data *data);
 
 #endif

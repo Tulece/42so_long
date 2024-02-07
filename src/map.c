@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 21:36:31 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/06 11:46:25 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:30:10 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	get_file_size(t_data *data)
 
 	fd = open(data->map.map_path, O_RDONLY);
 	if (fd == -1)
+	{
 		ft_printf("An error occured while opening the map.\n");
+		quit_early(data);
+	}
 	size = 0;
 	while (read(fd, &c, 1) > 0)
 		size++;
@@ -39,7 +42,7 @@ char	*file_to_str(t_data *data)
 		ft_printf("An error occured with malloc.\n");
 	fd = open(data->map.map_path, O_RDONLY);
 	if (fd == -1)
-		ft_printf("An rror occured while opening the map.\n");
+		return ("");
 	i = 0;
 	while (read(fd, &str[i], 1) > 0)
 		i++;
