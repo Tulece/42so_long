@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/04 16:59:34 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:26:19 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_args(int ac, char **av)
 {
-	ft_strlen(av[1]);
 	if (ac != 2)
 		return (ft_printf("Add a map from /map folder to play.\n"));
 	return (0);
