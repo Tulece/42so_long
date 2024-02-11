@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/07 11:45:02 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:33:48 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,28 @@
 # define INDEX_UP 2
 # define INDEX_DOWN 0
 
-typedef struct s_axes {
+typedef struct s_axes
+{
 	int			x;
 	int			y;
 }				t_axes;
 
-typedef struct s_portal {
+typedef struct s_portal
+{
 	t_axes	e_pos;
 	int		state;
 	int		anim_direction;
 }			t_portal;
 
-typedef struct s_collectibles {
+typedef struct s_collectibles
+{
 	t_axes					c_pos;
 	int						stone;
 	struct s_collectibles	*next;
 }							t_collectibles;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	t_axes				p_pos;
 	t_axes				dest_pos;
 	int					state;
@@ -90,7 +94,8 @@ typedef struct s_player {
 	int					direction;
 }						t_player;
 
-typedef struct s_enemies {
+typedef struct s_enemies
+{
 	t_axes				z_pos;
 	t_axes				dest_pos;
 	int					state;
@@ -100,12 +105,14 @@ typedef struct s_enemies {
 	int					is_hit;
 }						t_enemies;
 
-typedef struct s_textures {
+typedef struct s_textures
+{
 	t_axes	axes;
 	int		state;
 }			t_textures;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		h;
@@ -116,7 +123,8 @@ typedef struct s_img {
 	int		endian;
 }			t_img;
 
-typedef struct s_assets {
+typedef struct s_assets
+{
 	t_img	**player;
 	t_img	**enemies;
 	t_img	*textures;
@@ -129,7 +137,8 @@ typedef struct s_assets {
 	void	*stepcount;
 }			t_assets;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		**map;
 	char		**map_checker;
 	int			accessible_p;
@@ -143,7 +152,8 @@ typedef struct s_map {
 	int			nb_p;
 }				t_map;
 
-typedef struct s_data {
+typedef struct s_data
+{
 	void			*mlx;
 	void			*win;
 	int				img_width;
@@ -308,8 +318,7 @@ void			destroy_portal(t_data *data);
 void			free_winlose_screen(t_data *data);
 void			destroy_winlose_screen(t_data *data);
 
-
-void    		free_map(t_data *data);
+void			free_map(t_data *data);
 void			free_true_map(t_data *data);
 
 #endif
