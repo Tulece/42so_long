@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:34:20 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/11 16:35:28 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:59:15 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_true_map(t_data *data)
 	int	i;
 
 	i = -1;
- 	while (++i < data->map.map_dim.y)
+	while (++i < data->map.map_dim.y)
 		free(data->map.map[i]);
 	free(data->map.map);
 }
