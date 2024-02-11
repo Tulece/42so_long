@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:34:20 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/07 13:10:19 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:35:28 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_map(t_data *data)
 	free(data->map.map_checker);
 }
 
-void    free_true_map(t_data *data)
+void	free_true_map(t_data *data)
 {
 	int	i;
 
@@ -33,4 +33,3 @@ void    free_true_map(t_data *data)
 		free(data->map.map[i]);
 	free(data->map.map);
 }
-
