@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/11 16:26:19 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:56:24 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 int	check_args(int ac, char **av)
 {
+	int	len;
+
+	len = ft_strlen(av[1]);
 	if (ac != 2)
 		return (ft_printf("Add a map from /map folder to play.\n"));
+	if (av[1][len - 3] != '.' && av[1][len - 2] != 'b'
+		&& av[1][len - 1] != 'e' && av[1][len] != 'r')
+		return (ft_printf("The map must be a .ber file to play.\n"));
 	return (0);
 }
 
