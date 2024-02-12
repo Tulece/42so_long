@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:53:00 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/12 12:53:25 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:14:06 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	quit_early(t_data *data)
 {
 	if (data->map.map_checker)
 		free_map(data);
-	if (data->map.map && data->map.map[0] != NULL)
-		free_true_map(data);
 	if (data->map.map)
-		free(data->map.map);
+		free_true_map(data);
 	enemies_clear(data->enemies);
 	collec_clear(data->collectibles);
 	mlx_destroy_display(data->mlx);
