@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 21:36:31 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/07 13:30:10 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:41:00 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,14 @@ t_axes	map_size(t_data *data)
 	t_axes	size;
 
 	size.y = 0;
+	size.x = 0;
+	if (data->map.map[0] == NULL)
+	{
+		quit_early(data);
+		return (size);
+	}
 	while (data->map.map[size.y])
 		size.y++;
-	size.x = 0;
 	while (data->map.map[0][size.x])
 		size.x++;
 	return (size);
