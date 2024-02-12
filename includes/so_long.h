@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:55:40 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/11 18:33:48 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:24:52 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,7 @@ int				anime(t_data *data);
 void			anime_player(t_data *data);
 
 void			quit(t_data *data);
+int				cross_quit(t_data *data);
 void			quit_early(t_data *data);
 void			success_game(t_data *data);
 void			lose_game(t_data *data);

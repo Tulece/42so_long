@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:44:54 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/12 11:43:24 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:25:39 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char **av)
 	if (!data.win)
 		return (0);
 	display_map(&data);
+	mlx_hook(data.win, 17, 0, cross_quit, &data);
 	mlx_key_hook(data.win, hook_switch, &data);
 	mlx_loop_hook(data.mlx, &anime, &data);
 	mlx_loop(data.mlx);

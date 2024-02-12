@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:53:00 by anporced          #+#    #+#             */
-/*   Updated: 2024/02/11 16:36:17 by anporced         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:24:41 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@ void	quit_early(t_data *data)
 		free_true_map(data);
 	enemies_clear(data->enemies);
 	collec_clear(data->collectibles);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+}
+
+int	cross_quit(t_data *data)
+{
+	destroy_evolis(data);
+	destroy_attack(data);
+	destroy_collectibles(data);
+	destroy_evolutions(data);
+	destroy_textures(data);
+	destroy_enemies(data);
+	destroy_portal(data);
+	destroy_winlose_screen(data);
+	enemies_clear(data->enemies);
+	collec_clear(data->collectibles);
+	free_map(data);
+	free_true_map(data);
+	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	exit(0);
